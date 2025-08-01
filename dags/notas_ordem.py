@@ -15,8 +15,8 @@ def baixar_csv_para_csv_dir():
 
 with DAG(
     dag_id='exportar_bq_para_gcs_csv',
-    schedule_interval=None,
-    start_date=datetime(2023, 1, 1),
+    schedule_interval='0 7 * * *',
+    start_date=datetime(2025, 8, 1),
     catchup=False,
     tags=['bigquery', 'gcs', 'exportacao'],
 ) as dag:

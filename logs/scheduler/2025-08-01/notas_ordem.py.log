@@ -1643,3 +1643,122 @@
 [2025-08-01T10:13:04.820-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:13:04.819-0300] {dag.py:3096} INFO - Sync 1 DAGs
 [2025-08-01T10:13:04.827-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:13:04.827-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
 [2025-08-01T10:13:04.835-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.044 seconds
+[2025-08-01T10:13:34.941-0300] {processor.py:161} INFO - Started process (PID=764) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:13:34.943-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:13:34.943-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:13:34.943-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:13:34.950-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:13:34.964-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:13:34.964-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:13:34.971-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:13:34.971-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:13:34.980-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.043 seconds
+[2025-08-01T10:14:05.087-0300] {processor.py:161} INFO - Started process (PID=769) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:14:05.087-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:14:05.089-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:14:05.089-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:14:05.096-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:14:05.110-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:14:05.110-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:14:05.117-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:14:05.117-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:14:05.126-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.044 seconds
+[2025-08-01T10:14:35.224-0300] {processor.py:161} INFO - Started process (PID=774) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:14:35.224-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:14:35.226-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:14:35.225-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:14:35.233-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:14:35.250-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:14:35.250-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:14:35.258-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:14:35.258-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:14:35.269-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.049 seconds
+[2025-08-01T10:15:05.361-0300] {processor.py:161} INFO - Started process (PID=779) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:15:05.364-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:15:05.367-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:15:05.366-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:15:05.377-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:15:05.391-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:15:05.391-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:15:05.398-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:15:05.398-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:15:05.408-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.054 seconds
+[2025-08-01T10:15:35.517-0300] {processor.py:161} INFO - Started process (PID=784) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:15:35.518-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:15:35.519-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:15:35.519-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:15:35.526-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:15:35.540-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:15:35.540-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:15:35.547-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:15:35.547-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:15:35.557-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.044 seconds
+[2025-08-01T10:16:05.669-0300] {processor.py:161} INFO - Started process (PID=789) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:16:05.673-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:16:05.674-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:16:05.674-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:16:05.683-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:16:05.698-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:16:05.697-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:16:05.705-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:16:05.704-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:16:05.714-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.050 seconds
+[2025-08-01T10:16:35.824-0300] {processor.py:161} INFO - Started process (PID=794) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:16:35.825-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:16:35.826-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:16:35.826-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:16:35.835-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:16:35.849-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:16:35.848-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:16:35.855-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:16:35.855-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:16:35.865-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.047 seconds
+[2025-08-01T10:17:05.984-0300] {processor.py:161} INFO - Started process (PID=799) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:17:05.988-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:17:05.989-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:17:05.989-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:17:06.000-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:17:06.014-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:17:06.014-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:17:06.021-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:17:06.020-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:17:06.030-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.050 seconds
+[2025-08-01T10:17:36.130-0300] {processor.py:161} INFO - Started process (PID=804) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:17:36.130-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:17:36.132-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:17:36.132-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:17:36.142-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:17:36.161-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:17:36.161-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:17:36.169-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:17:36.168-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:17:36.180-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.055 seconds
+[2025-08-01T10:18:06.300-0300] {processor.py:161} INFO - Started process (PID=809) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:18:06.302-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:18:06.303-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:18:06.303-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:18:06.312-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:18:06.326-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:18:06.326-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:18:06.332-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:18:06.332-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:18:06.341-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.046 seconds
+[2025-08-01T10:18:36.459-0300] {processor.py:161} INFO - Started process (PID=814) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:18:36.460-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:18:36.461-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:18:36.461-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:18:36.470-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:18:36.484-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:18:36.484-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:18:36.492-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:18:36.492-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:18:36.501-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.048 seconds
+[2025-08-01T10:19:06.592-0300] {processor.py:161} INFO - Started process (PID=819) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:19:06.595-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:19:06.598-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:19:06.597-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:19:06.608-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:19:06.621-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:19:06.621-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:19:06.628-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:19:06.628-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:19:06.637-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.052 seconds
+[2025-08-01T10:19:36.736-0300] {processor.py:161} INFO - Started process (PID=824) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:19:36.737-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:19:36.738-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:19:36.738-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:19:36.745-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:19:36.760-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:19:36.760-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:19:36.768-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:19:36.768-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:19:36.778-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.045 seconds
+[2025-08-01T10:20:06.873-0300] {processor.py:161} INFO - Started process (PID=829) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:20:06.876-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:20:06.878-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:20:06.877-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:20:06.887-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:20:06.902-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:20:06.902-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:20:06.909-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:20:06.909-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:20:06.919-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.050 seconds
+[2025-08-01T10:20:37.043-0300] {processor.py:161} INFO - Started process (PID=834) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:20:37.044-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:20:37.045-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:20:37.045-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:20:37.054-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:20:37.068-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:20:37.068-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:20:37.074-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:20:37.074-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:20:37.083-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.046 seconds
+[2025-08-01T10:21:07.203-0300] {processor.py:161} INFO - Started process (PID=839) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:21:07.206-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:21:07.207-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:21:07.207-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:21:07.217-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:21:07.231-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:21:07.231-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:21:07.238-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:21:07.238-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:21:07.247-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.048 seconds
+[2025-08-01T10:21:37.354-0300] {processor.py:161} INFO - Started process (PID=844) to work on /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:21:37.354-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/notas_ordem.py for tasks to queue
+[2025-08-01T10:21:37.355-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:21:37.355-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:21:37.363-0300] {processor.py:840} INFO - DAG(s) 'exportar_bq_para_gcs_csv' retrieved from /opt/airflow/dags/notas_ordem.py
+[2025-08-01T10:21:37.377-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:21:37.377-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-01T10:21:37.384-0300] {logging_mixin.py:188} INFO - [2025-08-01T10:21:37.384-0300] {dag.py:3954} INFO - Setting next_dagrun for exportar_bq_para_gcs_csv to None, run_after=None
+[2025-08-01T10:21:37.393-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/notas_ordem.py took 0.044 seconds

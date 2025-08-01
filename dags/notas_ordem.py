@@ -27,7 +27,7 @@ with DAG(
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS` AS
-                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS` limit 10;
+                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS`;
                 """,
                 "useLegacySql": False,
             }

@@ -1,0 +1,37 @@
+[2025-07-31T18:21:00.284-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-31T18:21:00.293-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.carregar_csv_postgres manual__2025-07-31T21:20:39.698122+00:00 [queued]>
+[2025-07-31T18:21:00.297-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.carregar_csv_postgres manual__2025-07-31T21:20:39.698122+00:00 [queued]>
+[2025-07-31T18:21:00.298-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-07-31T18:21:00.306-0300] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): carregar_csv_postgres> on 2025-07-31 21:20:39.698122+00:00
+[2025-07-31T18:21:00.312-0300] {standard_task_runner.py:63} INFO - Started process 520 to run task
+[2025-07-31T18:21:00.313-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'carregar_csv_postgres', 'manual__2025-07-31T21:20:39.698122+00:00', '--job-id', '52', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmph4ufrjtn']
+[2025-07-31T18:21:00.315-0300] {standard_task_runner.py:91} INFO - Job 52: Subtask carregar_csv_postgres
+[2025-07-31T18:21:00.340-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.carregar_csv_postgres manual__2025-07-31T21:20:39.698122+00:00 [running]> on host 7b4a21630117
+[2025-07-31T18:21:00.388-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='carregar_csv_postgres' AIRFLOW_CTX_EXECUTION_DATE='2025-07-31T21:20:39.698122+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-31T21:20:39.698122+00:00'
+[2025-07-31T18:21:00.389-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-31T18:21:00.395-0300] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-07-31T18:21:00.395-0300] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        psql "$PG_CONN" -c "\n        COPY notas_ordem (\n            nota, tipo_nota, descricao, status_usuario, status_sistema, ordem, tag, desc_tag, tag_desc, criticidade,\n            grupo_planejamento, centro_trabalho, autor, nome_autor, criado_por, nome_criado, criado, modificado_por,\n            nome_modificado, modificado, data_nota, hora_nota, inicio_desejado, hora_inicio_desejado, fim_desejado,\n            hora_fim_desejado, oportunidade, tipo_prioridade, tipo_servico, tipo_impacto, grau_impacto, probabilidade,\n            prioridade, data_mod_prioridade, tipo_ordem, descricao_ordem, status_usuario_ordem, status_sistema_ordem,\n            centro_trabalho_ordem, grupo_planejamento_ordem, inicio_base_ordem, hora_inicio_base_ordem, fim_base_ordem,\n            hora_fim_base_ordem, prioridade_ordem, revisao, tag_ordem, desc_tag_ordem, criado_por_ordem, nome_criado_ordem,\n            data_criacao_ordem, modificado_por_ordem, nome_modificado_ordem, data_modificacao_ordem, objeto_nota, priorizado,\n            planejado, programado, encerrado, seguranca, vazamento, alarme, custo_planejado_ordem, custo_real_ordem,\n            ordem_priorizada_operacao, classificacao_prioridade\n        )\n        FROM \'/opt/***/csv/nota_ordem.csv\'\n        DELIMITER E\'\\x1f\' CSV HEADER;"\n    ']
+[2025-07-31T18:21:00.408-0300] {subprocess.py:86} INFO - Output:
+[2025-07-31T18:21:00.463-0300] {subprocess.py:93} INFO - ERROR:  could not open file "/opt/***/csv/nota_ordem.csv" for reading: No such file or directory
+[2025-07-31T18:21:00.464-0300] {subprocess.py:93} INFO - HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy.
+[2025-07-31T18:21:00.465-0300] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-07-31T18:21:00.466-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-31T18:21:00.481-0300] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-07-31T18:21:00.488-0300] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=exportar_bq_para_gcs_csv, task_id=carregar_csv_postgres, run_id=manual__2025-07-31T21:20:39.698122+00:00, execution_date=20250731T212039, start_date=20250731T212100, end_date=20250731T212100
+[2025-07-31T18:21:00.500-0300] {standard_task_runner.py:110} ERROR - Failed to execute job 52 for task carregar_csv_postgres (Bash command failed. The command returned a non-zero exit code 1.; 520)
+[2025-07-31T18:21:00.525-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-07-31T18:21:00.544-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-07-31T18:21:00.545-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

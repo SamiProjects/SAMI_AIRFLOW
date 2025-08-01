@@ -1,0 +1,55 @@
+[2025-07-31T15:41:49.182-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-31T15:41:49.280-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.exportar_tabela_bq_gcs manual__2025-07-31T18:41:47.903849+00:00 [queued]>
+[2025-07-31T15:41:49.284-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.exportar_tabela_bq_gcs manual__2025-07-31T18:41:47.903849+00:00 [queued]>
+[2025-07-31T15:41:49.284-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-07-31T15:41:49.294-0300] {taskinstance.py:2330} INFO - Executing <Task(BigQueryToGCSOperator): exportar_tabela_bq_gcs> on 2025-07-31 18:41:47.903849+00:00
+[2025-07-31T15:41:49.298-0300] {standard_task_runner.py:63} INFO - Started process 229 to run task
+[2025-07-31T15:41:49.300-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'exportar_tabela_bq_gcs', 'manual__2025-07-31T18:41:47.903849+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmptxx0azd5']
+[2025-07-31T15:41:49.301-0300] {standard_task_runner.py:91} INFO - Job 8: Subtask exportar_tabela_bq_gcs
+[2025-07-31T15:41:49.330-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.exportar_tabela_bq_gcs manual__2025-07-31T18:41:47.903849+00:00 [running]> on host e3648b0a9fa2
+[2025-07-31T15:41:49.385-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='exportar_tabela_bq_gcs' AIRFLOW_CTX_EXECUTION_DATE='2025-07-31T18:41:47.903849+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-31T18:41:47.903849+00:00'
+[2025-07-31T15:41:49.385-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-31T15:41:49.396-0300] {bigquery_to_gcs.py:201} INFO - Executing extract of sz-00022-ws.PLAMI.NOTAS_ORDENS into: ['gs://***_vps/nota_ordem.csv']
+[2025-07-31T15:41:49.396-0300] {connection.py:513} ERROR - Unable to retrieve connection from secrets backend (EnvironmentVariablesBackend). Checking subsequent secrets backend.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 508, in get_connection_from_secrets
+    conn = secrets_backend.get_connection(conn_id=conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/secrets/base_secrets.py", line 96, in get_connection
+    value = self.get_conn_value(conn_id=conn_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/secrets/environment_variables.py", line 52, in get_conn_value
+    return os.environ.get(CONN_ENV_PREFIX + conn_id.upper())
+                                            ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'upper'
+[2025-07-31T15:41:49.401-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-31T15:41:49.406-0300] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/cloud/transfers/bigquery_to_gcs.py", line 206, in execute
+    hook = BigQueryHook(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 159, in __init__
+    super().__init__(**kwargs)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/common/hooks/base_google.py", line 252, in __init__
+    self.extras: dict = self.get_connection(self.gcp_conn_id).extra_dejson
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `None` isn't defined
+[2025-07-31T15:41:49.409-0300] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=exportar_bq_para_gcs_csv, task_id=exportar_tabela_bq_gcs, run_id=manual__2025-07-31T18:41:47.903849+00:00, execution_date=20250731T184147, start_date=20250731T184149, end_date=20250731T184149
+[2025-07-31T15:41:49.416-0300] {standard_task_runner.py:110} ERROR - Failed to execute job 8 for task exportar_tabela_bq_gcs (The conn_id `None` isn't defined; 229)
+[2025-07-31T15:41:49.432-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-07-31T15:41:49.442-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-07-31T15:41:49.443-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

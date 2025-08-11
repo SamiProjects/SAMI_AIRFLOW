@@ -46,7 +46,8 @@ with DAG(
         field_delimiter='\x1f',
         print_header=True,
         compression='NONE',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        location='southamerica-east1'
     )   
 
     baixar_csv = PythonOperator(

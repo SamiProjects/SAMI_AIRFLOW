@@ -1,0 +1,882 @@
+[2025-08-07T16:53:34.951-0300] {processor.py:161} INFO - Started process (PID=172) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:53:34.951-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:53:34.952-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:53:34.952-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:53:34.955-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:53:34.954-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 10
+    ) as dag:
+             ^
+IndentationError: expected an indented block after 'with' statement on line 4
+[2025-08-07T16:53:34.955-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:53:34.967-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.020 seconds
+[2025-08-07T16:54:22.988-0300] {processor.py:161} INFO - Started process (PID=171) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:54:22.989-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:54:22.990-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:54:22.990-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:54:22.993-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:54:22.992-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 10
+    ) as dag:
+             ^
+IndentationError: expected an indented block after 'with' statement on line 4
+[2025-08-07T16:54:22.994-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:54:23.007-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.024 seconds
+[2025-08-07T16:55:02.961-0300] {processor.py:161} INFO - Started process (PID=172) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:02.962-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:55:02.963-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:02.963-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:02.966-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:02.965-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 10
+    ) as dag:
+             ^
+IndentationError: expected an indented block after 'with' statement on line 4
+[2025-08-07T16:55:02.966-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:02.980-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.024 seconds
+[2025-08-07T16:55:35.144-0300] {processor.py:161} INFO - Started process (PID=184) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:35.147-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:55:35.149-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:35.148-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:35.150-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:35.150-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 12
+    ) as dag:
+             ^
+IndentationError: expected an indented block after 'with' statement on line 6
+[2025-08-07T16:55:35.151-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:35.164-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.024 seconds
+[2025-08-07T16:55:39.211-0300] {processor.py:161} INFO - Started process (PID=194) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:39.211-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:55:39.213-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:39.212-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:39.217-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:39.216-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 16, in <module>
+    python_callable=buscar_variaveis_avisos,
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'buscar_variaveis_avisos' is not defined
+[2025-08-07T16:55:39.217-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:39.229-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.022 seconds
+[2025-08-07T16:55:41.229-0300] {processor.py:161} INFO - Started process (PID=199) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:41.230-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:55:41.232-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:41.232-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:41.237-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:41.236-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 15, in <module>
+    python_callable=buscar_variaveis_avisos,
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'buscar_variaveis_avisos' is not defined
+[2025-08-07T16:55:41.238-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:41.257-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.032 seconds
+[2025-08-07T16:55:44.272-0300] {processor.py:161} INFO - Started process (PID=204) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:44.272-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:55:44.273-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:44.273-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:44.276-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:44.276-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 18, in <module>
+    python_callable=buscar_variaveis_avisos,
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'buscar_variaveis_avisos' is not defined
+[2025-08-07T16:55:44.276-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:44.287-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.021 seconds
+[2025-08-07T16:55:52.322-0300] {processor.py:161} INFO - Started process (PID=209) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:52.323-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:55:52.324-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.323-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:52.331-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:55:52.391-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.391-0300] {override.py:1829} INFO - Created Permission View: can read on DAG:avisos_coordenador
+[2025-08-07T16:55:52.396-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.396-0300] {override.py:1829} INFO - Created Permission View: can delete on DAG:avisos_coordenador
+[2025-08-07T16:55:52.400-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.399-0300] {override.py:1829} INFO - Created Permission View: can edit on DAG:avisos_coordenador
+[2025-08-07T16:55:52.400-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.400-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:55:52.405-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.405-0300] {dag.py:3118} INFO - Creating ORM DAG for avisos_coordenador
+[2025-08-07T16:55:52.406-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:55:52.406-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:55:52.417-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.098 seconds
+[2025-08-07T16:56:22.480-0300] {processor.py:161} INFO - Started process (PID=219) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:22.484-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:56:22.485-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:22.484-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:22.492-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:22.505-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:22.504-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:56:22.512-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:22.512-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:56:22.522-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T16:56:28.565-0300] {processor.py:161} INFO - Started process (PID=224) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:28.566-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:56:28.567-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:28.567-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:28.573-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:28.586-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:28.586-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:56:28.594-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:28.593-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:56:28.605-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T16:56:39.675-0300] {processor.py:161} INFO - Started process (PID=234) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:39.676-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:56:39.677-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:39.677-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:39.684-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:56:39.696-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:39.696-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:56:39.703-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:56:39.703-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:56:39.713-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T16:57:09.849-0300] {processor.py:161} INFO - Started process (PID=244) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:57:09.852-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:57:09.855-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:57:09.854-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:57:09.863-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:57:09.879-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:57:09.878-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:57:09.887-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:57:09.887-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:57:09.895-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.052 seconds
+[2025-08-07T16:57:40.049-0300] {processor.py:161} INFO - Started process (PID=254) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:57:40.050-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:57:40.052-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:57:40.052-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:57:40.058-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:57:40.071-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:57:40.071-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:57:40.078-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:57:40.078-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:57:40.089-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T16:58:10.254-0300] {processor.py:161} INFO - Started process (PID=264) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:10.258-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:58:10.259-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:10.259-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:10.265-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:10.279-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:10.278-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:58:10.287-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:10.287-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:58:10.297-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T16:58:27.401-0300] {processor.py:161} INFO - Started process (PID=269) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:27.402-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:58:27.403-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:27.403-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:27.411-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:27.423-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:27.423-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:58:27.429-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:27.429-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:58:27.439-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T16:58:58.038-0300] {processor.py:161} INFO - Started process (PID=279) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:58.042-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:58:58.043-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:58.043-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:58.050-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:58:58.063-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:58.063-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:58:58.070-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:58:58.070-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:58:58.080-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T16:59:28.229-0300] {processor.py:161} INFO - Started process (PID=289) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:59:28.230-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:59:28.231-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:59:28.230-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:59:28.236-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:59:28.248-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:59:28.248-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:59:28.256-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:59:28.256-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:59:28.265-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.041 seconds
+[2025-08-07T16:59:58.436-0300] {processor.py:161} INFO - Started process (PID=299) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:59:58.440-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T16:59:58.441-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:59:58.441-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:59:58.449-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T16:59:58.462-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:59:58.461-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T16:59:58.468-0300] {logging_mixin.py:188} INFO - [2025-08-07T16:59:58.468-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T16:59:58.477-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.051 seconds
+[2025-08-07T17:00:28.648-0300] {processor.py:161} INFO - Started process (PID=309) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:00:28.649-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:00:28.651-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:00:28.651-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:00:28.658-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:00:28.670-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:00:28.670-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:00:28.677-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:00:28.677-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:00:28.687-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:00:58.829-0300] {processor.py:161} INFO - Started process (PID=321) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:00:58.832-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:00:58.833-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:00:58.833-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:00:58.839-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:00:58.852-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:00:58.852-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:00:58.859-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:00:58.859-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:00:58.868-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:01:29.020-0300] {processor.py:161} INFO - Started process (PID=331) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:01:29.020-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:01:29.022-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:01:29.021-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:01:29.027-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:01:29.040-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:01:29.040-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:01:29.048-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:01:29.048-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:01:29.057-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:01:59.202-0300] {processor.py:161} INFO - Started process (PID=341) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:01:59.205-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:01:59.207-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:01:59.206-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:01:59.214-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:01:59.227-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:01:59.227-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:01:59.234-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:01:59.234-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:01:59.244-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:02:02.266-0300] {processor.py:161} INFO - Started process (PID=346) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:02.267-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:02:02.269-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:02.269-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:02.276-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:02.289-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:02.289-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:02:02.295-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:02.295-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:02:02.305-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:02:32.458-0300] {processor.py:161} INFO - Started process (PID=356) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:32.458-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:02:32.460-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:32.460-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:32.466-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:32.478-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:32.477-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:02:32.485-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:32.485-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:02:32.494-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.040 seconds
+[2025-08-07T17:02:38.512-0300] {processor.py:161} INFO - Started process (PID=361) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:38.513-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:02:38.514-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:38.514-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:38.520-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:38.535-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:38.534-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:02:38.542-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:38.541-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:02:38.553-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:02:59.663-0300] {processor.py:161} INFO - Started process (PID=371) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:59.664-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:02:59.665-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:59.664-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:59.670-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:02:59.683-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:59.682-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:02:59.689-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:02:59.689-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:02:59.699-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.040 seconds
+[2025-08-07T17:03:15.783-0300] {processor.py:161} INFO - Started process (PID=381) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:03:15.786-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:03:15.788-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:03:15.787-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:03:15.794-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:03:15.806-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:03:15.806-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:03:15.813-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:03:15.813-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:03:15.824-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:03:45.969-0300] {processor.py:161} INFO - Started process (PID=391) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:03:45.969-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:03:45.971-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:03:45.971-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:03:45.976-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:03:45.988-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:03:45.988-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:03:45.996-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:03:45.996-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:03:46.006-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:04:16.170-0300] {processor.py:161} INFO - Started process (PID=401) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:16.174-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:04:16.175-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:16.174-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:16.181-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:16.193-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:16.193-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:04:16.200-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:16.200-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:04:16.209-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:04:20.239-0300] {processor.py:161} INFO - Started process (PID=406) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:20.240-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:04:20.241-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:20.240-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:20.246-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:20.259-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:20.258-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:04:20.265-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:20.265-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:04:20.276-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.041 seconds
+[2025-08-07T17:04:28.274-0300] {processor.py:161} INFO - Started process (PID=411) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:28.274-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:04:28.276-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:28.275-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:28.278-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:28.277-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 26
+    def 
+        ^
+SyntaxError: invalid syntax
+[2025-08-07T17:04:28.278-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:28.289-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.018 seconds
+[2025-08-07T17:04:41.362-0300] {processor.py:161} INFO - Started process (PID=421) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:41.362-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:04:41.363-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:41.363-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:41.365-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:04:41.364-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 26
+    def verificar_valor_tag(webid)
+                                  ^
+SyntaxError: expected ':'
+[2025-08-07T17:04:41.365-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:04:41.378-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.021 seconds
+[2025-08-07T17:05:11.550-0300] {processor.py:161} INFO - Started process (PID=431) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:11.553-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:05:11.555-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:11.555-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:11.558-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:11.557-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 26
+    def verificar_valor_tag(webid)
+                                  ^
+SyntaxError: expected ':'
+[2025-08-07T17:05:11.558-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:11.569-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.024 seconds
+[2025-08-07T17:05:14.577-0300] {processor.py:161} INFO - Started process (PID=436) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:14.577-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:05:14.578-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:14.578-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:14.579-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:14.579-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 28
+    with DAG(
+    ^^^^
+IndentationError: expected an indented block after function definition on line 26
+[2025-08-07T17:05:14.580-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:14.592-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.021 seconds
+[2025-08-07T17:05:23.647-0300] {processor.py:161} INFO - Started process (PID=441) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:23.648-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:05:23.649-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:23.649-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:23.651-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:23.650-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 30
+    with DAG(
+    ^^^^
+IndentationError: expected an indented block after function definition on line 26
+[2025-08-07T17:05:23.651-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:23.661-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.018 seconds
+[2025-08-07T17:05:29.697-0300] {processor.py:161} INFO - Started process (PID=446) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:29.697-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:05:29.699-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:29.699-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:29.702-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:29.701-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 27
+    url = 
+          ^
+SyntaxError: invalid syntax
+[2025-08-07T17:05:29.703-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:29.714-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.026 seconds
+[2025-08-07T17:05:36.753-0300] {processor.py:161} INFO - Started process (PID=451) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:36.753-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:05:36.754-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:36.754-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:36.760-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:36.773-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:36.772-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:05:36.780-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:36.780-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:05:36.791-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.042 seconds
+[2025-08-07T17:05:53.882-0300] {processor.py:161} INFO - Started process (PID=461) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:53.885-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:05:53.886-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:53.886-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:53.892-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:05:53.906-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:53.906-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:05:53.914-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:05:53.913-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:05:53.926-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:06:05.966-0300] {processor.py:161} INFO - Started process (PID=466) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:05.967-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:06:05.969-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:05.969-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:05.975-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:05.987-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:05.987-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:06:05.993-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:05.993-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:06:06.003-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:06:12.049-0300] {processor.py:161} INFO - Started process (PID=476) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:12.050-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:06:12.051-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:12.051-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:12.059-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:12.077-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:12.077-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:06:12.084-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:12.084-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:06:12.099-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.055 seconds
+[2025-08-07T17:06:16.122-0300] {processor.py:161} INFO - Started process (PID=481) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:16.123-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:06:16.125-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:16.124-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:16.128-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:16.127-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 29
+    response = requests.post(url=f'{url')
+                                        ^
+SyntaxError: f-string: expecting '}'
+[2025-08-07T17:06:16.128-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:16.139-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.026 seconds
+[2025-08-07T17:06:18.152-0300] {processor.py:161} INFO - Started process (PID=486) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:18.153-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:06:18.155-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:18.155-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:18.166-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:18.181-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:18.180-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:06:18.187-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:18.187-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:06:18.204-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.057 seconds
+[2025-08-07T17:06:20.187-0300] {processor.py:161} INFO - Started process (PID=491) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:20.187-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:06:20.188-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:20.188-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:20.194-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:20.206-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:20.206-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:06:20.214-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:20.213-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:06:20.224-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.042 seconds
+[2025-08-07T17:06:50.388-0300] {processor.py:161} INFO - Started process (PID=501) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:50.392-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:06:50.394-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:50.393-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:50.402-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:06:50.414-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:50.414-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:06:50.420-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:06:50.420-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:06:50.429-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:07:17.596-0300] {processor.py:161} INFO - Started process (PID=511) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:17.597-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:17.599-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:17.598-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:17.605-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:17.617-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:17.617-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:07:17.624-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:17.624-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:07:17.633-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:07:31.701-0300] {processor.py:161} INFO - Started process (PID=516) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:31.704-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:31.706-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:31.706-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:31.716-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:31.728-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:31.727-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:07:31.734-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:31.733-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:07:31.743-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:07:34.729-0300] {processor.py:161} INFO - Started process (PID=521) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:34.729-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:34.730-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:34.730-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:34.735-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:34.750-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:34.749-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:07:34.758-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:34.758-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:07:34.768-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:07:38.797-0300] {processor.py:161} INFO - Started process (PID=526) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:38.798-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:38.800-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:38.799-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:38.807-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:38.819-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:38.819-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:07:38.826-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:38.826-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:07:38.836-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:07:45.890-0300] {processor.py:161} INFO - Started process (PID=536) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:45.891-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:45.893-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:45.892-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:45.900-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:45.913-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:45.913-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:07:45.921-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:45.921-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:07:45.931-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:07:53.952-0300] {processor.py:161} INFO - Started process (PID=541) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:53.952-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:53.954-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:53.954-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:53.957-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:53.955-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 29
+    "Cache-Control":
+                   ^
+SyntaxError: expression expected after dictionary key and ':'
+[2025-08-07T17:07:53.958-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:53.974-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.029 seconds
+[2025-08-07T17:07:58.007-0300] {processor.py:161} INFO - Started process (PID=546) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:58.008-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:07:58.010-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:58.009-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:58.017-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:07:58.029-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:58.028-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:07:58.035-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:07:58.035-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:07:58.045-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:08:03.047-0300] {processor.py:161} INFO - Started process (PID=551) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:03.048-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:03.050-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:03.049-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:03.052-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:03.051-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 28
+    token = 
+            ^
+SyntaxError: invalid syntax
+[2025-08-07T17:08:03.052-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:03.064-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.025 seconds
+[2025-08-07T17:08:07.107-0300] {processor.py:161} INFO - Started process (PID=556) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:07.110-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:07.113-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:07.112-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:07.121-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:07.134-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:07.133-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:08:07.140-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:07.140-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:08:07.151-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:08:13.204-0300] {processor.py:161} INFO - Started process (PID=566) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:13.205-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:13.206-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:13.206-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:13.213-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:13.225-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:13.225-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:08:13.232-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:13.232-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:08:13.242-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:08:22.268-0300] {processor.py:161} INFO - Started process (PID=571) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:22.269-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:22.271-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:22.271-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:22.277-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:22.289-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:22.289-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:08:22.296-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:22.296-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:08:22.307-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:08:25.319-0300] {processor.py:161} INFO - Started process (PID=576) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:25.320-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:25.322-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:25.322-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:25.329-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:25.341-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:25.341-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:08:25.347-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:25.347-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:08:25.357-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:08:32.376-0300] {processor.py:161} INFO - Started process (PID=581) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:32.377-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:32.378-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:32.378-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:32.380-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:32.379-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 35
+    response = requests.post(url=f'{url}/streams/{webid}/value',json)
+                                                                    ^
+SyntaxError: positional argument follows keyword argument
+[2025-08-07T17:08:32.380-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:32.391-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.019 seconds
+[2025-08-07T17:08:44.465-0300] {processor.py:161} INFO - Started process (PID=591) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:44.466-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:44.467-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:44.467-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:44.472-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:44.486-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:44.486-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:08:44.493-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:44.493-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:08:44.505-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.044 seconds
+[2025-08-07T17:08:50.539-0300] {processor.py:161} INFO - Started process (PID=596) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:50.540-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:08:50.541-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:50.541-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:50.546-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:08:50.560-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:50.560-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:08:50.567-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:08:50.567-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:08:50.577-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.044 seconds
+[2025-08-07T17:09:20.735-0300] {processor.py:161} INFO - Started process (PID=606) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:09:20.738-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:09:20.740-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:09:20.740-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:09:20.748-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:09:20.762-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:09:20.762-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:09:20.769-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:09:20.769-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:09:20.778-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:09:50.930-0300] {processor.py:161} INFO - Started process (PID=616) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:09:50.934-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:09:50.935-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:09:50.935-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:09:50.942-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:09:50.954-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:09:50.954-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:09:50.961-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:09:50.961-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:09:50.970-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:10:21.132-0300] {processor.py:161} INFO - Started process (PID=626) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:10:21.133-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:10:21.134-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:10:21.134-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:10:21.141-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:10:21.153-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:10:21.153-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:10:21.160-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:10:21.160-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:10:21.169-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:10:51.348-0300] {processor.py:161} INFO - Started process (PID=636) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:10:51.351-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:10:51.354-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:10:51.353-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:10:51.362-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:10:51.374-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:10:51.374-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:10:51.380-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:10:51.380-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:10:51.388-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:11:21.554-0300] {processor.py:161} INFO - Started process (PID=646) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:11:21.555-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:11:21.557-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:11:21.557-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:11:21.564-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:11:21.577-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:11:21.576-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:11:21.583-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:11:21.583-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:11:21.592-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:11:51.748-0300] {processor.py:161} INFO - Started process (PID=656) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:11:51.750-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:11:51.753-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:11:51.752-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:11:51.760-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:11:51.773-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:11:51.773-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:11:51.780-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:11:51.780-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:11:51.791-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:12:21.946-0300] {processor.py:161} INFO - Started process (PID=666) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:21.946-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:12:21.947-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:21.947-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:21.952-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:21.967-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:21.966-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:12:21.974-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:21.974-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:12:21.983-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:12:49.124-0300] {processor.py:161} INFO - Started process (PID=676) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:49.127-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:12:49.128-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:49.128-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:49.134-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:49.146-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:49.146-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:12:49.155-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:49.154-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:12:49.165-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.044 seconds
+[2025-08-07T17:12:52.195-0300] {processor.py:161} INFO - Started process (PID=681) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:52.195-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:12:52.196-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:52.196-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:52.202-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:52.215-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:52.215-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:12:52.222-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:52.222-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:12:52.233-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.041 seconds
+[2025-08-07T17:12:56.237-0300] {processor.py:161} INFO - Started process (PID=686) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:56.238-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:12:56.240-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:56.240-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:56.247-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:12:56.259-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:56.259-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:12:56.265-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:12:56.265-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:12:56.277-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.049 seconds
+[2025-08-07T17:13:00.302-0300] {processor.py:161} INFO - Started process (PID=691) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:00.303-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:00.305-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:00.304-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:00.312-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:00.324-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:00.323-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:00.330-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:00.330-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:00.341-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:13:08.364-0300] {processor.py:161} INFO - Started process (PID=696) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:08.365-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:08.366-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:08.366-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:08.374-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:08.387-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:08.387-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:08.394-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:08.394-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:08.404-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.050 seconds
+[2025-08-07T17:13:16.460-0300] {processor.py:161} INFO - Started process (PID=706) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:16.461-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:16.462-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:16.462-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:16.468-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:16.483-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:16.483-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:16.490-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:16.490-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:16.502-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:13:18.525-0300] {processor.py:161} INFO - Started process (PID=711) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:18.526-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:18.527-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:18.527-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:18.533-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:18.546-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:18.546-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:18.553-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:18.553-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:18.563-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.044 seconds
+[2025-08-07T17:13:22.561-0300] {processor.py:161} INFO - Started process (PID=716) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:22.564-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:22.566-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:22.566-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:22.572-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:22.586-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:22.585-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:22.592-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:22.592-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:22.602-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.046 seconds
+[2025-08-07T17:13:26.614-0300] {processor.py:161} INFO - Started process (PID=721) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:26.615-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:26.616-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:26.615-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:26.622-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:26.635-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:26.635-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:26.642-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:26.641-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:26.651-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.041 seconds
+[2025-08-07T17:13:38.689-0300] {processor.py:161} INFO - Started process (PID=726) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:38.689-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:38.690-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:38.690-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:38.696-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:38.708-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:38.708-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:38.715-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:38.715-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:38.724-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.039 seconds
+[2025-08-07T17:13:52.819-0300] {processor.py:161} INFO - Started process (PID=736) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:52.820-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:13:52.822-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:52.821-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:52.828-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:13:52.841-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:52.841-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:13:52.847-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:13:52.847-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:13:52.856-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:14:23.026-0300] {processor.py:161} INFO - Started process (PID=746) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:23.029-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:14:23.030-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:23.030-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:23.036-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:23.049-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:23.049-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:14:23.058-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:23.058-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:14:23.068-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:14:35.133-0300] {processor.py:161} INFO - Started process (PID=751) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:35.133-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:14:35.135-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:35.135-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:35.143-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:35.211-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:35.211-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:14:35.219-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:35.219-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:14:35.231-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.103 seconds
+[2025-08-07T17:14:48.212-0300] {processor.py:161} INFO - Started process (PID=761) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:48.212-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:14:48.213-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:48.213-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:48.218-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:14:48.225-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:48.225-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:14:48.234-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:14:48.233-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:14:48.245-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.039 seconds
+[2025-08-07T17:15:10.325-0300] {processor.py:161} INFO - Started process (PID=766) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:15:10.326-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:15:10.328-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:15:10.327-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:15:10.335-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:15:10.393-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:15:10.393-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:15:10.399-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:15:10.399-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:15:10.413-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.095 seconds
+[2025-08-07T17:15:40.488-0300] {processor.py:161} INFO - Started process (PID=780) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:15:40.489-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:15:40.490-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:15:40.490-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:15:40.497-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:15:40.510-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:15:40.510-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:15:40.519-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:15:40.519-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:15:40.530-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:16:10.702-0300] {processor.py:161} INFO - Started process (PID=790) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:10.703-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:16:10.705-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:10.705-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:10.713-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:10.728-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:10.728-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:16:10.735-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:10.735-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:16:10.744-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.052 seconds
+[2025-08-07T17:16:17.805-0300] {processor.py:161} INFO - Started process (PID=800) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:17.806-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:16:17.808-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:17.807-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:17.815-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:17.827-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:17.827-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:16:17.834-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:17.834-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:16:17.844-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:16:25.894-0300] {processor.py:161} INFO - Started process (PID=805) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:25.895-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:16:25.896-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:25.896-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:25.904-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:25.917-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:25.916-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:16:25.923-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:25.923-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:16:25.932-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.043 seconds
+[2025-08-07T17:16:47.042-0300] {processor.py:161} INFO - Started process (PID=815) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:47.045-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:16:47.046-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:47.046-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:47.053-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:16:47.066-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:47.066-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:16:47.073-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:16:47.073-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:16:47.083-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.048 seconds
+[2025-08-07T17:17:17.231-0300] {processor.py:161} INFO - Started process (PID=825) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:17:17.231-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:17:17.233-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:17:17.232-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:17:17.239-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:17:17.253-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:17:17.252-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:17:17.262-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:17:17.262-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:17:17.272-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.050 seconds
+[2025-08-07T17:17:47.427-0300] {processor.py:161} INFO - Started process (PID=835) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:17:47.430-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:17:47.432-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:17:47.432-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:17:47.440-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:17:47.453-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:17:47.452-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:17:47.459-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:17:47.459-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:17:47.468-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.050 seconds
+[2025-08-07T17:18:17.607-0300] {processor.py:161} INFO - Started process (PID=845) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:17.607-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:18:17.609-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:17.608-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:17.615-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:17.629-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:17.629-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:18:17.639-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:17.638-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:18:17.649-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:18:21.690-0300] {processor.py:161} INFO - Started process (PID=850) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:21.693-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:18:21.695-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:21.695-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:21.699-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:21.697-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 52
+    valor_atual = data.get("Value")
+IndentationError: unexpected indent
+[2025-08-07T17:18:21.699-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:21.713-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.029 seconds
+[2025-08-07T17:18:26.737-0300] {processor.py:161} INFO - Started process (PID=855) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:26.738-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:18:26.741-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:26.740-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:26.743-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:26.743-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 52
+    valor_atual = data.get("Value")
+IndentationError: unexpected indent
+[2025-08-07T17:18:26.744-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:26.754-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.026 seconds
+[2025-08-07T17:18:30.782-0300] {processor.py:161} INFO - Started process (PID=860) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:30.782-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:18:30.784-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:30.783-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:30.791-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:30.805-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:30.804-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:18:30.811-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:30.811-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:18:30.822-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:18:42.859-0300] {processor.py:161} INFO - Started process (PID=865) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:42.860-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:18:42.862-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:42.861-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:42.869-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:18:42.881-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:42.881-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:18:42.887-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:18:42.887-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:18:42.896-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.047 seconds
+[2025-08-07T17:19:13.074-0300] {processor.py:161} INFO - Started process (PID=875) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:13.078-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:19:13.080-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:13.080-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:13.088-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:13.101-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:13.101-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:19:13.109-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:13.108-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:19:13.119-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.054 seconds
+[2025-08-07T17:19:18.170-0300] {processor.py:161} INFO - Started process (PID=885) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:18.171-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:19:18.172-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:18.172-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:18.174-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:18.173-0300] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/avisos_coordenador.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/avisos_coordenador.py", line 48
+    response = verificar_valor_tag(vr[a'webid'])
+                                       ^^^^^^^
+SyntaxError: invalid syntax
+[2025-08-07T17:19:18.174-0300] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:18.186-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.020 seconds
+[2025-08-07T17:19:20.214-0300] {processor.py:161} INFO - Started process (PID=890) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:20.215-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:19:20.216-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:20.215-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:20.221-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:20.235-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:20.234-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:19:20.241-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:20.241-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:19:20.250-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.040 seconds
+[2025-08-07T17:19:50.391-0300] {processor.py:161} INFO - Started process (PID=904) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:50.392-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:19:50.393-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:50.393-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:50.399-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:19:50.413-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:50.413-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:19:50.420-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:19:50.420-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:19:50.430-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.045 seconds
+[2025-08-07T17:20:20.593-0300] {processor.py:161} INFO - Started process (PID=914) to work on /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:20:20.594-0300] {processor.py:830} INFO - Processing file /opt/airflow/dags/avisos_coordenador.py for tasks to queue
+[2025-08-07T17:20:20.596-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:20:20.595-0300] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:20:20.603-0300] {processor.py:840} INFO - DAG(s) 'avisos_coordenador' retrieved from /opt/airflow/dags/avisos_coordenador.py
+[2025-08-07T17:20:20.617-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:20:20.616-0300] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-08-07T17:20:20.624-0300] {logging_mixin.py:188} INFO - [2025-08-07T17:20:20.624-0300] {dag.py:3954} INFO - Setting next_dagrun for avisos_coordenador to None, run_after=None
+[2025-08-07T17:20:20.633-0300] {processor.py:183} INFO - Processing /opt/airflow/dags/avisos_coordenador.py took 0.049 seconds

@@ -1,0 +1,99 @@
+[2025-08-08T15:20:05.893-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T15:20:05.902-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:20:05.905-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:20:05.905-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-08T15:20:05.911-0300] {taskinstance.py:2330} INFO - Executing <Task(BigQueryInsertJobOperator): criar_tabela_temp_bq> on 2025-08-07 10:00:00+00:00
+[2025-08-08T15:20:05.916-0300] {standard_task_runner.py:63} INFO - Started process 206 to run task
+[2025-08-08T15:20:05.918-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'criar_tabela_temp_bq', 'scheduled__2025-08-07T10:00:00+00:00', '--job-id', '120', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmprrcvlta7']
+[2025-08-08T15:20:05.919-0300] {standard_task_runner.py:91} INFO - Job 120: Subtask criar_tabela_temp_bq
+[2025-08-08T15:20:05.942-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [running]> on host be375a341e67
+[2025-08-08T15:20:05.987-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='criar_tabela_temp_bq' AIRFLOW_CTX_EXECUTION_DATE='2025-08-07T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-07T10:00:00+00:00'
+[2025-08-08T15:20:05.988-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T15:20:06.003-0300] {connection.py:513} ERROR - Unable to retrieve connection from secrets backend (EnvironmentVariablesBackend). Checking subsequent secrets backend.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 508, in get_connection_from_secrets
+    conn = secrets_backend.get_connection(conn_id=conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/secrets/base_secrets.py", line 116, in get_connection
+    return self.deserialize_connection(conn_id=conn_id, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/secrets/base_secrets.py", line 68, in deserialize_connection
+    return Connection.from_json(conn_id=conn_id, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 564, in from_json
+    return Connection(conn_id=conn_id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __init__() got an unexpected keyword argument 'extra__google_cloud_platform__project'
+[2025-08-08T15:20:06.008-0300] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2025-08-08T15:20:06.008-0300] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2025-08-08T15:20:06.008-0300] {credentials_provider.py:353} INFO - Getting connection using `google.auth.default()` since no explicit credentials are provided.
+[2025-08-08T15:20:06.046-0300] {bigquery.py:2832} INFO - Executing: {'query': {'query': '\n                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS` AS\n                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS`;\n                ', 'useLegacySql': False}}'
+[2025-08-08T15:20:06.047-0300] {bigquery.py:1660} INFO - Inserting job ***_exportar_bq_para_gcs_csv_criar_tabela_temp_bq_2025_08_07T10_00_00_00_00_84b3ea1e8a2fcf2e00f115c12d98427b
+[2025-08-08T15:20:26.400-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T15:20:26.432-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=exportar_bq_para_gcs_csv, task_id=criar_tabela_temp_bq, run_id=scheduled__2025-08-07T10:00:00+00:00, execution_date=20250807T100000, start_date=20250808T182005, end_date=20250808T182026
+[2025-08-08T15:20:26.451-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-08T15:20:26.464-0300] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T15:20:26.465-0300] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-08T15:37:53.890-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T15:37:53.900-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:37:53.905-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:37:53.905-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-08T15:37:53.912-0300] {taskinstance.py:2330} INFO - Executing <Task(BigQueryInsertJobOperator): criar_tabela_temp_bq> on 2025-08-07 10:00:00+00:00
+[2025-08-08T15:37:53.916-0300] {standard_task_runner.py:63} INFO - Started process 240 to run task
+[2025-08-08T15:37:53.918-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'criar_tabela_temp_bq', 'scheduled__2025-08-07T10:00:00+00:00', '--job-id', '129', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmpw64oa4me']
+[2025-08-08T15:37:53.919-0300] {standard_task_runner.py:91} INFO - Job 129: Subtask criar_tabela_temp_bq
+[2025-08-08T15:37:53.943-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [running]> on host b5a2a68d2496
+[2025-08-08T15:37:53.988-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='criar_tabela_temp_bq' AIRFLOW_CTX_EXECUTION_DATE='2025-08-07T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-07T10:00:00+00:00'
+[2025-08-08T15:37:53.989-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T15:37:53.996-0300] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-08-08T15:37:53.996-0300] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2025-08-08T15:37:53.996-0300] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2025-08-08T15:37:54.029-0300] {bigquery.py:2832} INFO - Executing: {'query': {'query': '\n                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS` AS\n                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS`;\n                ', 'useLegacySql': False}}'
+[2025-08-08T15:37:54.029-0300] {bigquery.py:1660} INFO - Inserting job ***_exportar_bq_para_gcs_csv_criar_tabela_temp_bq_2025_08_07T10_00_00_00_00_aa7bb8c8c473981c83a7a5bf767d87bf
+[2025-08-08T15:38:12.900-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T15:38:12.929-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=exportar_bq_para_gcs_csv, task_id=criar_tabela_temp_bq, run_id=scheduled__2025-08-07T10:00:00+00:00, execution_date=20250807T100000, start_date=20250808T183753, end_date=20250808T183812
+[2025-08-08T15:38:12.956-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-08T15:38:12.978-0300] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T15:38:12.979-0300] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-08T15:48:10.275-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T15:48:10.284-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:48:10.288-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:48:10.288-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-08T15:48:10.295-0300] {taskinstance.py:2330} INFO - Executing <Task(BigQueryInsertJobOperator): criar_tabela_temp_bq> on 2025-08-07 10:00:00+00:00
+[2025-08-08T15:48:10.300-0300] {standard_task_runner.py:63} INFO - Started process 279 to run task
+[2025-08-08T15:48:10.302-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'criar_tabela_temp_bq', 'scheduled__2025-08-07T10:00:00+00:00', '--job-id', '140', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmp5e2ncom2']
+[2025-08-08T15:48:10.303-0300] {standard_task_runner.py:91} INFO - Job 140: Subtask criar_tabela_temp_bq
+[2025-08-08T15:48:10.329-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [running]> on host 6f99aecc4c0e
+[2025-08-08T15:48:10.378-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='criar_tabela_temp_bq' AIRFLOW_CTX_EXECUTION_DATE='2025-08-07T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-07T10:00:00+00:00'
+[2025-08-08T15:48:10.378-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T15:48:10.385-0300] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-08-08T15:48:10.385-0300] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2025-08-08T15:48:10.386-0300] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2025-08-08T15:48:10.421-0300] {bigquery.py:2832} INFO - Executing: {'query': {'query': '\n                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS` AS\n                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS`;\n                ', 'useLegacySql': False}}'
+[2025-08-08T15:48:10.421-0300] {bigquery.py:1660} INFO - Inserting job ***_exportar_bq_para_gcs_csv_criar_tabela_temp_bq_2025_08_07T10_00_00_00_00_d85f5fd47100a27a261870ceed43bced
+[2025-08-08T15:48:28.218-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T15:48:28.247-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=exportar_bq_para_gcs_csv, task_id=criar_tabela_temp_bq, run_id=scheduled__2025-08-07T10:00:00+00:00, execution_date=20250807T100000, start_date=20250808T184810, end_date=20250808T184828
+[2025-08-08T15:48:28.290-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-08T15:48:28.305-0300] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T15:48:28.306-0300] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-08T15:49:41.111-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T15:49:41.121-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:49:41.125-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:49:41.126-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-08T15:49:41.133-0300] {taskinstance.py:2330} INFO - Executing <Task(BigQueryInsertJobOperator): criar_tabela_temp_bq> on 2025-08-07 10:00:00+00:00
+[2025-08-08T15:49:41.139-0300] {standard_task_runner.py:63} INFO - Started process 323 to run task
+[2025-08-08T15:49:41.141-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'criar_tabela_temp_bq', 'scheduled__2025-08-07T10:00:00+00:00', '--job-id', '146', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmpyt_z20m0']
+[2025-08-08T15:49:41.143-0300] {standard_task_runner.py:91} INFO - Job 146: Subtask criar_tabela_temp_bq
+[2025-08-08T15:49:41.172-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.criar_tabela_temp_bq scheduled__2025-08-07T10:00:00+00:00 [running]> on host 6f99aecc4c0e
+[2025-08-08T15:49:41.230-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='criar_tabela_temp_bq' AIRFLOW_CTX_EXECUTION_DATE='2025-08-07T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-07T10:00:00+00:00'
+[2025-08-08T15:49:41.231-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T15:49:41.238-0300] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-08-08T15:49:41.238-0300] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2025-08-08T15:49:41.239-0300] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2025-08-08T15:49:41.274-0300] {bigquery.py:2832} INFO - Executing: {'query': {'query': '\n                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS` AS\n                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS`;\n                ', 'useLegacySql': False}}'
+[2025-08-08T15:49:41.275-0300] {bigquery.py:1660} INFO - Inserting job ***_exportar_bq_para_gcs_csv_criar_tabela_temp_bq_2025_08_07T10_00_00_00_00_984ee33b2525646eecf61a1eaab5e2fa
+[2025-08-08T15:49:57.212-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T15:49:57.235-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=exportar_bq_para_gcs_csv, task_id=criar_tabela_temp_bq, run_id=scheduled__2025-08-07T10:00:00+00:00, execution_date=20250807T100000, start_date=20250808T184941, end_date=20250808T184957
+[2025-08-08T15:49:57.284-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-08T15:49:57.300-0300] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T15:49:57.301-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

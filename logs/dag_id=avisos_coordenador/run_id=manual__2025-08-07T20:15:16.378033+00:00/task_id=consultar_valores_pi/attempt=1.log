@@ -1,0 +1,26 @@
+[2025-08-07T17:15:18.532-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-07T17:15:18.548-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-07T20:15:16.378033+00:00 [queued]>
+[2025-08-07T17:15:18.552-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-07T20:15:16.378033+00:00 [queued]>
+[2025-08-07T17:15:18.552-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-07T17:15:18.559-0300] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): consultar_valores_pi> on 2025-08-07 20:15:16.378033+00:00
+[2025-08-07T17:15:18.562-0300] {standard_task_runner.py:63} INFO - Started process 779 to run task
+[2025-08-07T17:15:18.564-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'avisos_coordenador', 'consultar_valores_pi', 'manual__2025-08-07T20:15:16.378033+00:00', '--job-id', '83', '--raw', '--subdir', 'DAGS_FOLDER/avisos_coordenador.py', '--cfg-path', '/tmp/tmp5pyz97oi']
+[2025-08-07T17:15:18.565-0300] {standard_task_runner.py:91} INFO - Job 83: Subtask consultar_valores_pi
+[2025-08-07T17:15:18.588-0300] {task_command.py:426} INFO - Running <TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-07T20:15:16.378033+00:00 [running]> on host 6c187a0d27dc
+[2025-08-07T17:15:18.633-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='avisos_coordenador' AIRFLOW_CTX_TASK_ID='consultar_valores_pi' AIRFLOW_CTX_EXECUTION_DATE='2025-08-07T20:15:16.378033+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-07T20:15:16.378033+00:00'
+[2025-08-07T17:15:18.633-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-07T17:15:18.645-0300] {logging_mixin.py:188} INFO - 🔎 Consultando 4-59-00-FT-77672-R3.MV (WebID: F1DPiEtpNmRvkUisz9g8pYUOEg9McAAAUElEQUpBQ1w0LTU5LTAwLUZULTc3NjcyLVIzLk1W)
+[2025-08-07T17:15:19.346-0300] {logging_mixin.py:188} INFO - 🌐 Status: 200
+[2025-08-07T17:15:19.347-0300] {logging_mixin.py:188} INFO - {'Annotated': False,
+ 'Good': True,
+ 'Questionable': False,
+ 'Substituted': False,
+ 'Timestamp': '2025-08-07T20:15:18.030014Z',
+ 'UnitsAbbreviation': '',
+ 'Value': 211.666168}
+[2025-08-07T17:15:19.349-0300] {python.py:237} INFO - Done. Returned value was: None
+[2025-08-07T17:15:19.350-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-07T17:15:19.363-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=avisos_coordenador, task_id=consultar_valores_pi, run_id=manual__2025-08-07T20:15:16.378033+00:00, execution_date=20250807T201516, start_date=20250807T201518, end_date=20250807T201519
+[2025-08-07T17:15:19.418-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-07T17:15:19.440-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-07T17:15:19.442-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,52 @@
+[2025-08-08T17:08:15.400-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T17:08:15.417-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-08T20:08:12.566632+00:00 [queued]>
+[2025-08-08T17:08:15.421-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-08T20:08:12.566632+00:00 [queued]>
+[2025-08-08T17:08:15.421-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-08T17:08:15.518-0300] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): consultar_valores_pi> on 2025-08-08 20:08:12.566632+00:00
+[2025-08-08T17:08:15.523-0300] {standard_task_runner.py:63} INFO - Started process 765 to run task
+[2025-08-08T17:08:15.525-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'avisos_coordenador', 'consultar_valores_pi', 'manual__2025-08-08T20:08:12.566632+00:00', '--job-id', '171', '--raw', '--subdir', 'DAGS_FOLDER/avisos_coordenador.py', '--cfg-path', '/tmp/tmpoglbymwa']
+[2025-08-08T17:08:15.526-0300] {standard_task_runner.py:91} INFO - Job 171: Subtask consultar_valores_pi
+[2025-08-08T17:08:15.550-0300] {task_command.py:426} INFO - Running <TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-08T20:08:12.566632+00:00 [running]> on host 1a4c58afc681
+[2025-08-08T17:08:15.598-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='avisos_coordenador' AIRFLOW_CTX_TASK_ID='consultar_valores_pi' AIRFLOW_CTX_EXECUTION_DATE='2025-08-08T20:08:12.566632+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-08T20:08:12.566632+00:00'
+[2025-08-08T17:08:15.599-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T17:08:16.046-0300] {logging_mixin.py:188} INFO - 🚨 Aviso id_alarme=1 disparado. Silêncio até 2025-08-08T20:09:16.046176+00:00
+[2025-08-08T17:08:19.648-0300] {logging_mixin.py:188} INFO - 📨 Mensagem gerada:
+[2025-08-08T17:08:19.648-0300] {logging_mixin.py:188} INFO -  Prezados(as),
+
+Espero que todos estejam bem.
+
+Venho por meio desta solicitar a atenção de vocês para um desvio que foi identificado em relação à gestão ambiental do nosso processo.
+
+Conforme demonstrado no gráfico de tendência em anexo, temos observado uma média de vazão dos efluentes gerados pelo processo de produção de papel que ultrapassa o limite estipulado em nosso programa de excelência operacional. Esse limite foi estabelecido considerando a capacidade máxima instalada na estação de tratamento de efluentes específica para a fabricação de papel.
+
+Vazão Média (2 horas): 237,40 m³/h.
+[2025-08-08T17:08:19.664-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T17:08:19.664-0300] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/avisos_coordenador.py", line 293, in consultar_valores_pi
+    grafico_b64 = gerar_grafico_trend_base64(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/avisos_coordenador.py", line 172, in gerar_grafico_trend_base64
+    plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
+                                        ^^^^^^
+NameError: name 'mdates' is not defined
+[2025-08-08T17:08:19.670-0300] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=avisos_coordenador, task_id=consultar_valores_pi, run_id=manual__2025-08-08T20:08:12.566632+00:00, execution_date=20250808T200812, start_date=20250808T200815, end_date=20250808T200819
+[2025-08-08T17:08:19.679-0300] {standard_task_runner.py:110} ERROR - Failed to execute job 171 for task consultar_valores_pi (name 'mdates' is not defined; 765)
+[2025-08-08T17:08:19.708-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-08T17:08:19.726-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T17:08:19.727-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

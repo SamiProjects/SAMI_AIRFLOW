@@ -1,0 +1,62 @@
+[2025-08-08T15:33:18.264-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T15:33:18.273-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.exportar_tabela_bq_gcs scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:33:18.277-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.exportar_tabela_bq_gcs scheduled__2025-08-07T10:00:00+00:00 [queued]>
+[2025-08-08T15:33:18.278-0300] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-08-08T15:33:18.283-0300] {taskinstance.py:2330} INFO - Executing <Task(BigQueryToGCSOperator): exportar_tabela_bq_gcs> on 2025-08-07 10:00:00+00:00
+[2025-08-08T15:33:18.288-0300] {standard_task_runner.py:63} INFO - Started process 226 to run task
+[2025-08-08T15:33:18.290-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'exportar_tabela_bq_gcs', 'scheduled__2025-08-07T10:00:00+00:00', '--job-id', '124', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmpih5j780x']
+[2025-08-08T15:33:18.291-0300] {standard_task_runner.py:91} INFO - Job 124: Subtask exportar_tabela_bq_gcs
+[2025-08-08T15:33:18.315-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.exportar_tabela_bq_gcs scheduled__2025-08-07T10:00:00+00:00 [running]> on host 773b2b90ca78
+[2025-08-08T15:33:18.362-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='exportar_tabela_bq_gcs' AIRFLOW_CTX_EXECUTION_DATE='2025-08-07T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-07T10:00:00+00:00'
+[2025-08-08T15:33:18.362-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T15:33:18.376-0300] {bigquery_to_gcs.py:201} INFO - Executing extract of sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS into: ['gs://***_vps/nota_ordem.csv']
+[2025-08-08T15:33:18.377-0300] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-08-08T15:33:18.377-0300] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2025-08-08T15:33:18.377-0300] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2025-08-08T15:33:18.412-0300] {bigquery_to_gcs.py:224} INFO - Executing: {'extract': {'sourceTable': {'projectId': 'sz-00022-ws', 'datasetId': 'PLAMI', 'tableId': 'TMP_NOTAS_ORDENS'}, 'compression': 'NONE', 'destinationUris': ['gs://***_vps/nota_ordem.csv'], 'destinationFormat': 'CSV', 'fieldDelimiter': '\x1f', 'printHeader': True}}
+[2025-08-08T15:33:18.412-0300] {bigquery.py:1660} INFO - Inserting job ***_exportar_bq_para_gcs_csv_exportar_tabela_bq_gcs_2025_08_07T10_00_00_00_00_25a7e0156089b94962a331960db9c41f
+[2025-08-08T15:33:21.028-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T15:33:21.029-0300] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/cloud/transfers/bigquery_to_gcs.py", line 230, in execute
+    job = hook.get_job(
+          ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/common/hooks/base_google.py", line 486, in inner_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1593, in get_job
+    job = client.get_job(job_id=job_id, project=project_id, location=location)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/cloud/bigquery/client.py", line 2192, in get_job
+    resource = self._call_api(
+               ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/cloud/bigquery/client.py", line 831, in _call_api
+    return call()
+           ^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 GET https://bigquery.googleapis.com/bigquery/v2/projects/sz-00022-ws/jobs/airflow_exportar_bq_para_gcs_csv_exportar_tabela_bq_gcs_2025_08_07T10_00_00_00_00_25a7e0156089b94962a331960db9c41f?projection=full&prettyPrint=false: Not found: Job sz-00022-ws:airflow_exportar_bq_para_gcs_csv_exportar_tabela_bq_gcs_2025_08_07T10_00_00_00_00_25a7e0156089b94962a331960db9c41f
+[2025-08-08T15:33:21.043-0300] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=exportar_bq_para_gcs_csv, task_id=exportar_tabela_bq_gcs, run_id=scheduled__2025-08-07T10:00:00+00:00, execution_date=20250807T100000, start_date=20250808T183318, end_date=20250808T183321
+[2025-08-08T15:33:21.060-0300] {standard_task_runner.py:110} ERROR - Failed to execute job 124 for task exportar_tabela_bq_gcs (404 GET https://bigquery.googleapis.com/bigquery/v2/projects/sz-00022-ws/jobs/airflow_exportar_bq_para_gcs_csv_exportar_tabela_bq_gcs_2025_08_07T10_00_00_00_00_25a7e0156089b94962a331960db9c41f?projection=full&prettyPrint=false: Not found: Job sz-00022-ws:airflow_exportar_bq_para_gcs_csv_exportar_tabela_bq_gcs_2025_08_07T10_00_00_00_00_25a7e0156089b94962a331960db9c41f; 226)
+[2025-08-08T15:33:21.110-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-08T15:33:21.139-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T15:33:21.143-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

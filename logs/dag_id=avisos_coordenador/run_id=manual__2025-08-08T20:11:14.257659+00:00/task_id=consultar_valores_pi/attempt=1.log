@@ -1,0 +1,28 @@
+[2025-08-08T17:11:15.921-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-08T17:11:15.936-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-08T20:11:14.257659+00:00 [queued]>
+[2025-08-08T17:11:15.940-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-08T20:11:14.257659+00:00 [queued]>
+[2025-08-08T17:11:15.940-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-08T17:11:16.033-0300] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): consultar_valores_pi> on 2025-08-08 20:11:14.257659+00:00
+[2025-08-08T17:11:16.037-0300] {standard_task_runner.py:63} INFO - Started process 853 to run task
+[2025-08-08T17:11:16.039-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'avisos_coordenador', 'consultar_valores_pi', 'manual__2025-08-08T20:11:14.257659+00:00', '--job-id', '175', '--raw', '--subdir', 'DAGS_FOLDER/avisos_coordenador.py', '--cfg-path', '/tmp/tmpel7sa2ej']
+[2025-08-08T17:11:16.040-0300] {standard_task_runner.py:91} INFO - Job 175: Subtask consultar_valores_pi
+[2025-08-08T17:11:16.064-0300] {task_command.py:426} INFO - Running <TaskInstance: avisos_coordenador.consultar_valores_pi manual__2025-08-08T20:11:14.257659+00:00 [running]> on host 1a4c58afc681
+[2025-08-08T17:11:16.108-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='avisos_coordenador' AIRFLOW_CTX_TASK_ID='consultar_valores_pi' AIRFLOW_CTX_EXECUTION_DATE='2025-08-08T20:11:14.257659+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-08T20:11:14.257659+00:00'
+[2025-08-08T17:11:16.109-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-08T17:11:16.674-0300] {logging_mixin.py:188} INFO - 🚨 Aviso id_alarme=1 disparado. Silêncio até 2025-08-08T20:12:16.674463+00:00
+[2025-08-08T17:11:20.821-0300] {logging_mixin.py:188} INFO - 📨 Mensagem gerada:
+[2025-08-08T17:11:20.822-0300] {logging_mixin.py:188} INFO -  Prezados/as,
+
+Espero que estejam todos bem.
+
+Venho por meio desta, chamar a atenção de vocês para um desvio identificado na gestão ambiental do nosso processo produtivo.
+
+De acordo com o gráfico de tendência em anexo, estamos registrando uma média de vazão de efluentes do processo de produção de papel que ultrapassa o limite estipulado em nosso programa de excelência operacional. Essa referência foi estabelecida em linha com a capacidade máxima da estação de tratamento de efluentes destinada à fabricação de papel.
+
+Vazão Média (2 horas): 246,99 m³/h.
+[2025-08-08T17:11:22.845-0300] {python.py:237} INFO - Done. Returned value was: None
+[2025-08-08T17:11:22.846-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-08T17:11:22.860-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=avisos_coordenador, task_id=consultar_valores_pi, run_id=manual__2025-08-08T20:11:14.257659+00:00, execution_date=20250808T201114, start_date=20250808T201115, end_date=20250808T201122
+[2025-08-08T17:11:22.924-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-08T17:11:22.945-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-08T17:11:22.948-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

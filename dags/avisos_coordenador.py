@@ -308,8 +308,8 @@ def consultar_valores_pi(**kwargs):
 # ========= DAG =========
 with DAG(
     dag_id="avisos_coordenador",
-    schedule_interval=None,
-    start_date=datetime(2025, 8, 1, tzinfo=timezone.utc),
+    schedule_interval="*/30 * * * *",
+    start_date=datetime(2025, 8, 10, tzinfo=timezone.utc),
     catchup=False,
     tags=["aviso", "ia", "coordenacao"],
 ) as dag:

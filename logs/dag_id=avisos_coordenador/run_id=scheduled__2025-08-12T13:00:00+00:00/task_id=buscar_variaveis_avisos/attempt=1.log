@@ -1,0 +1,48 @@
+[2025-08-12T10:48:51.254-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-12T10:48:51.274-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: avisos_coordenador.buscar_variaveis_avisos scheduled__2025-08-12T13:00:00+00:00 [queued]>
+[2025-08-12T10:48:51.280-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: avisos_coordenador.buscar_variaveis_avisos scheduled__2025-08-12T13:00:00+00:00 [queued]>
+[2025-08-12T10:48:51.280-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-12T10:48:51.290-0300] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): buscar_variaveis_avisos> on 2025-08-12 13:00:00+00:00
+[2025-08-12T10:48:51.295-0300] {standard_task_runner.py:63} INFO - Started process 4507 to run task
+[2025-08-12T10:48:51.297-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'avisos_coordenador', 'buscar_variaveis_avisos', 'scheduled__2025-08-12T13:00:00+00:00', '--job-id', '209', '--raw', '--subdir', 'DAGS_FOLDER/avisos_coordenador.py', '--cfg-path', '/tmp/tmpymsrgufr']
+[2025-08-12T10:48:51.460-0300] {standard_task_runner.py:91} INFO - Job 209: Subtask buscar_variaveis_avisos
+[2025-08-12T10:48:51.490-0300] {task_command.py:426} INFO - Running <TaskInstance: avisos_coordenador.buscar_variaveis_avisos scheduled__2025-08-12T13:00:00+00:00 [running]> on host 1a4c58afc681
+[2025-08-12T10:48:51.566-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='avisos_coordenador' AIRFLOW_CTX_TASK_ID='buscar_variaveis_avisos' AIRFLOW_CTX_EXECUTION_DATE='2025-08-12T13:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-12T13:00:00+00:00'
+[2025-08-12T10:48:51.567-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-12T10:48:51.586-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-12T10:48:51.587-0300] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/avisos_coordenador.py", line 206, in buscar_variaveis_avisos
+    conn = get_conn()
+           ^^^^^^^^^^
+  File "/opt/airflow/dags/avisos_coordenador.py", line 38, in get_conn
+    return psycopg2.connect(os.getenv("PG_CONN"))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "10.66.66.1", port 6432 failed: Network is unreachable
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2025-08-12T10:48:51.599-0300] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=avisos_coordenador, task_id=buscar_variaveis_avisos, run_id=scheduled__2025-08-12T13:00:00+00:00, execution_date=20250812T130000, start_date=20250812T134851, end_date=20250812T134851
+[2025-08-12T10:48:51.613-0300] {standard_task_runner.py:110} ERROR - Failed to execute job 209 for task buscar_variaveis_avisos (connection to server at "10.66.66.1", port 6432 failed: Network is unreachable
+	Is the server running on that host and accepting TCP/IP connections?
+; 4507)
+[2025-08-12T10:48:51.670-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-12T10:48:51.821-0300] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-12T10:48:51.826-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

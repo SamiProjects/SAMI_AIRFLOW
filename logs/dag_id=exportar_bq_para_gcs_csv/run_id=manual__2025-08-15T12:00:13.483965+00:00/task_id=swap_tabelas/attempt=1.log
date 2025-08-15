@@ -1,0 +1,24 @@
+[2025-08-15T09:02:31.160-0300] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-15T09:02:31.168-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.swap_tabelas manual__2025-08-15T12:00:13.483965+00:00 [queued]>
+[2025-08-15T09:02:31.172-0300] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: exportar_bq_para_gcs_csv.swap_tabelas manual__2025-08-15T12:00:13.483965+00:00 [queued]>
+[2025-08-15T09:02:31.172-0300] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-08-15T09:02:31.178-0300] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): swap_tabelas> on 2025-08-15 12:00:13.483965+00:00
+[2025-08-15T09:02:31.184-0300] {standard_task_runner.py:63} INFO - Started process 295 to run task
+[2025-08-15T09:02:31.185-0300] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'exportar_bq_para_gcs_csv', 'swap_tabelas', 'manual__2025-08-15T12:00:13.483965+00:00', '--job-id', '227', '--raw', '--subdir', 'DAGS_FOLDER/notas_ordem.py', '--cfg-path', '/tmp/tmppjml6l5u']
+[2025-08-15T09:02:31.187-0300] {standard_task_runner.py:91} INFO - Job 227: Subtask swap_tabelas
+[2025-08-15T09:02:31.211-0300] {task_command.py:426} INFO - Running <TaskInstance: exportar_bq_para_gcs_csv.swap_tabelas manual__2025-08-15T12:00:13.483965+00:00 [running]> on host 3c38c83cef21
+[2025-08-15T09:02:31.255-0300] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='exportar_bq_para_gcs_csv' AIRFLOW_CTX_TASK_ID='swap_tabelas' AIRFLOW_CTX_EXECUTION_DATE='2025-08-15T12:00:13.483965+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-15T12:00:13.483965+00:00'
+[2025-08-15T09:02:31.256-0300] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-15T09:02:31.262-0300] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-15T09:02:31.263-0300] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n            psql "$PG_CONN" -c "\n                DROP TABLE IF EXISTS notas_ordem_backup;\n                ALTER TABLE notas_ordem RENAME TO notas_ordem_backup;\n                ALTER TABLE notas_ordem_temp RENAME TO notas_ordem;\n                DROP TABLE IF EXISTS notas_ordem_backup;\n            "\n        ']
+[2025-08-15T09:02:31.274-0300] {subprocess.py:86} INFO - Output:
+[2025-08-15T09:02:31.461-0300] {subprocess.py:93} INFO - NOTICE:  table "notas_ordem_backup" does not exist, skipping
+[2025-08-15T09:02:31.560-0300] {subprocess.py:93} INFO - DROP TABLE
+[2025-08-15T09:02:31.560-0300] {subprocess.py:93} INFO - ALTER TABLE
+[2025-08-15T09:02:31.561-0300] {subprocess.py:93} INFO - ALTER TABLE
+[2025-08-15T09:02:31.561-0300] {subprocess.py:93} INFO - DROP TABLE
+[2025-08-15T09:02:31.562-0300] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-15T09:02:31.563-0300] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-15T09:02:31.600-0300] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=exportar_bq_para_gcs_csv, task_id=swap_tabelas, run_id=manual__2025-08-15T12:00:13.483965+00:00, execution_date=20250815T120013, start_date=20250815T120231, end_date=20250815T120231
+[2025-08-15T09:02:31.639-0300] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-15T09:02:31.645-0300] {local_task_job_runner.py:222} INFO - ::endgroup::

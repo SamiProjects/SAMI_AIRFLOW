@@ -14,7 +14,7 @@ def baixar_csv_para_csv_dir():
     blob.download_to_filename('/opt/airflow/csv/nota_ordem.csv')
 
 with DAG(
-    dag_id='exportar_bq_para_gcs_csv',
+    dag_id='exportar_notas_ordem_bq_postgre',
     schedule_interval='0 7 * * *',
     start_date=datetime(2025, 8, 1),
     catchup=False,
@@ -81,7 +81,7 @@ with DAG(
                     hora_fim_base_ordem, prioridade_ordem, revisao, tag_ordem, desc_tag_ordem, criado_por_ordem, nome_criado_ordem,
                     data_criacao_ordem, modificado_por_ordem, nome_modificado_ordem, data_modificacao_ordem, objeto_nota, priorizado,
                     planejado, programado, encerrado, seguranca, vazamento, alarme, custo_planejado_ordem, custo_real_ordem,
-                    ordem_priorizada_operacao, classificacao_prioridade
+                    ordem_priorizada_operacao, classificacao_prioridade,nota_encerrada,disciplina,area
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

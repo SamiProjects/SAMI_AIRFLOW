@@ -1,3 +1,16 @@
-service_account
+# Airflow
+logs/*
+!logs/.gitkeep
+dags/__pycache__
+*.pyc
+.airflowenv
+.airflowignore
+
+# Credenciais/variáveis
 .env
-venv/
+service_account/*.json
+
+# Python
+venv
+.venv
+__pycache__

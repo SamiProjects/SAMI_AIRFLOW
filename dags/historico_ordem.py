@@ -25,8 +25,7 @@ def extrair_dados(**context):
                 DATA_CRIACAO,CRIADO_POR,MODIFICADO_POR,TAG,DESC_TAG,CRITICIDADE,
                 STATUS_USUARIO_ORDEM,STATUS_SISTEMA_ORDEM,REVISAO,
                 CUSTO_PLANEJADO,CUSTO_REAL
-            FROM `sz-00022-ws.TABELAS_SAP.ORDENS` 
-            LIMIT;"""
+            FROM `sz-00022-ws.TABELAS_SAP.ORDENS`;"""
 
     df = pandas_gbq.read_gbq(query, project_id="sz-00022-ws")
     linhas = json.loads(df.to_json(orient="records"))

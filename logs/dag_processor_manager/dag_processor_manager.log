@@ -50024,3 +50024,75 @@ File Path                                  PID  Runtime      # DAGs    # Errors 
 /opt/airflow/dags/historico_ordem.py      3600  0.00s             1           0  0.08s           2025-08-25T14:24:43
 /opt/airflow/dags/notas_ordem.py                                  1           0  0.06s           2025-08-25T14:24:56
 ================================================================================
+[2025-08-25T11:25:43.433-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.63s           2025-08-25T14:25:22
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.08s           2025-08-25T14:25:26
+/opt/airflow/dags/historico_ordem.py      3615  0.01s             1           0  0.06s           2025-08-25T14:25:13
+================================================================================
+[2025-08-25T11:26:13.638-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.52s           2025-08-25T14:25:54
+/opt/airflow/dags/historico_ordem.py      3630  0.00s             1           0  0.07s           2025-08-25T14:25:43
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.07s           2025-08-25T14:25:56
+================================================================================
+[2025-08-25T11:26:43.852-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.49s           2025-08-25T14:26:25
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.08s           2025-08-25T14:26:26
+/opt/airflow/dags/historico_ordem.py      3645  0.01s             1           0  0.06s           2025-08-25T14:26:13
+================================================================================
+[2025-08-25T11:27:14.068-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.52s           2025-08-25T14:26:56
+/opt/airflow/dags/historico_ordem.py      3660  0.00s             1           0  0.08s           2025-08-25T14:26:43
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.08s           2025-08-25T14:26:57
+================================================================================
+[2025-08-25T11:27:44.331-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.53s           2025-08-25T14:27:27
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.08s           2025-08-25T14:27:27
+/opt/airflow/dags/historico_ordem.py      3675  0.01s             1           0  0.06s           2025-08-25T14:27:14
+================================================================================
+[2025-08-25T11:28:14.520-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.51s           2025-08-25T14:27:58
+/opt/airflow/dags/historico_ordem.py      3690  0.00s             1           0  0.07s           2025-08-25T14:27:44
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.07s           2025-08-25T14:27:57
+================================================================================
+[2025-08-25T11:28:44.736-0300] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                  PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+---------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/avisos_coordenador.py                           1           0  0.50s           2025-08-25T14:28:30
+/opt/airflow/dags/notas_ordem.py                                  1           0  0.08s           2025-08-25T14:28:27
+/opt/airflow/dags/historico_ordem.py      3705  0.01s             1           0  0.07s           2025-08-25T14:28:14
+================================================================================
+[2025-08-25T11:28:58.840-0300] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-08-25T11:28:58.841-0300] {manager.py:740} INFO - There are 3 files in /opt/airflow/dags

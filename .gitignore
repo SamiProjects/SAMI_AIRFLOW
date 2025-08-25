@@ -1,16 +1,27 @@
 # Airflow
 logs/*
 !logs/.gitkeep
-dags/__pycache__
+dags/__pycache__/
 *.pyc
 .airflowenv
 .airflowignore
+
+# CSV temporários (mantém só o .gitkeep)
+csv/*
+!csv/.gitkeep
 
 # Credenciais/variáveis
 .env
 service_account/*.json
 
 # Python
-venv
-.venv
-__pycache__
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+*.pyo
+*.pyd
+
+# IDEs/editores
+.vscode/
+.idea/

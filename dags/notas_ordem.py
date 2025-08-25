@@ -47,7 +47,8 @@ with DAG(
         print_header=True,
         compression='NONE',
         gcp_conn_id='google_cloud_default',
-        location='southamerica-east1'
+        location='southamerica-east1',
+        force_rerun=True,
     )   
 
     baixar_csv = PythonOperator(
@@ -93,13 +94,28 @@ with DAG(
     swap_tabelas = BashOperator(
         task_id='swap_tabelas',
         bash_command="""
-            psql "$PG_CONN" -c "
-                DROP TABLE IF EXISTS notas_ordem_backup;
-                ALTER TABLE notas_ordem RENAME TO notas_ordem_backup;
-                ALTER TABLE notas_ordem_temp RENAME TO notas_ordem;
-                DROP TABLE IF EXISTS notas_ordem_backup;
-            "
-        """,
+psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+BEGIN;
+
+-- backup da tabela filha 
+DROP TABLE IF EXISTS notas_priorizadas_temp;
+CREATE TEMP TABLE notas_priorizadas_temp AS SELECT * FROM notas_priorizadas;
+
+-- truncate na pai e filhas 
+TRUNCATE notas_ordem CASCADE;
+
+-- recarrega a pai 
+INSERT INTO notas_ordem SELECT * FROM notas_ordem_temp;
+
+-- restaura a filha 
+INSERT INTO notas_priorizadas SELECT * FROM notas_priorizadas_temp;
+
+-- limpa staging 
+DROP TABLE notas_ordem_temp;
+
+COMMIT;
+EOF
+""",
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
 

@@ -196,10 +196,10 @@ def gerar_grafico_trend_base64(items: list[dict], titulo: str | None = None) -> 
     plt.tight_layout()
 
     buf = BytesIO()
-    fig.savefig(buf, format="png", bbox_inches="tight")
+    fig.savefig(buf, format="jpeg",dpi=72, bbox_inches="tight")
     plt.close(fig)
     img_b64 = base64.b64encode(buf.getvalue()).decode("ascii")
-    return f"data:image/png;base64,{img_b64}"
+    return f"data:image/jpeg;base64,{img_b64}"
 
 # ========= Tarefas =========
 def buscar_variaveis_avisos(**kwargs):

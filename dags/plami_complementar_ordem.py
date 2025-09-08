@@ -15,6 +15,17 @@ def baixar_csv_para_csv_dir(bucket_name,bucket_blob,path_download):
     blob = bucket.blob(bucket_blob) 
     blob.download_to_filename(path_download)
 
+def baixar_csvs(bucket_name, prefix, local_dir):
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blobs = bucket.list_blobs(prefix=prefix)
+
+    os.makedirs(local_dir, exist_ok=True)
+
+    for blob in blobs:
+        local_file = os.path.join(local_dir, os.path.basename(blob.name))
+        blob.download_to_filename(local_file)
+
 with DAG(
     dag_id='exportar_complementar_ordem_plami',
     schedule_interval='20 7 * * *',
@@ -53,13 +64,11 @@ with DAG(
         force_rerun=True,
     )   
 
-    baixar_csv = GCSToLocalFilesystemOperator(
+    baixar_csv = PythonOperator(
     task_id="baixar_csvs_gcs",
-    bucket="airflow_vps",
-    object_name="operacao_ordem_plami-*.csv",   # todos os shards
-    filename="/opt/airflow/csv/",               # salva todos na pasta local
-    gcp_conn_id="google_cloud_default"
-    )
+    python_callable=baixar_csvs,
+    op_args=["airflow_vps", "operacao_ordem_plami-", "/opt/airflow/csv"],
+   )
 
     criar_tabela_temp_pg = BashOperator(
         task_id='criar_tabela_temp_pg',
@@ -155,13 +164,6 @@ EOF
     task_id='limpar_csv_local',
     bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami*.csv'
     )  
-
-    limpar_csv_gcs = GCSDeleteObjectsOperator(
-    task_id="limpar_csv_gcs",
-    bucket_name="airflow_vps",
-    prefix="operacao_ordem_plami-",   # deleta todos que começam com esse prefixo
-    gcp_conn_id="google_cloud_default"
-)
 
     ##MATERIAIS
     criar_tabela_temp_materiais_bq = BigQueryInsertJobOperator(
@@ -406,6 +408,6 @@ EOF
     bash_command='rm -f /opt/airflow/csv/ordens_geral.csv'
     )
 
-    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csv_gcs
+    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local
     criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> swap_tabelas_materiais >> limpar_csv_local_materiais 
     criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens

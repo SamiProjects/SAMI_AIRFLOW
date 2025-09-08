@@ -6,7 +6,8 @@ from airflow.operators.bash import BashOperator
 from google.cloud import storage
 from datetime import datetime
 import os
-import pandas as pd
+from airflow.providers.google.cloud.transfers.gcs_to_local import GCSToLocalFilesystemOperator
+from airflow.providers.google.cloud.operators.gcs import GCSDeleteObjectsOperator
 
 def baixar_csv_para_csv_dir(bucket_name,bucket_blob,path_download): 
     client = storage.Client() 
@@ -52,12 +53,12 @@ with DAG(
         force_rerun=True,
     )   
 
-    baixar_csv = BashOperator(
-        task_id='baixar_csv_gcs',
-        bash_command="""
-        mkdir -p /opt/airflow/csv/
-        gsutil cp gs://airflow_vps/operacao_ordem_plami-*.csv /opt/airflow/csv/
-    """
+    baixar_csv = GCSToLocalFilesystemOperator(
+    task_id="baixar_csvs_gcs",
+    bucket="airflow_vps",
+    object_name="operacao_ordem_plami-*.csv",   # todos os shards
+    filename="/opt/airflow/csv/",               # salva todos na pasta local
+    gcp_conn_id="google_cloud_default"
     )
 
     criar_tabela_temp_pg = BashOperator(
@@ -155,12 +156,12 @@ EOF
     bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami*.csv'
     )  
 
-    limpar_csv_gcs = BashOperator(
-    task_id='limpar_csv_gcs',
-    bash_command="""
-        gsutil rm -f gs://airflow_vps/operacao_ordem_plami-*.csv || true
-    """
-    )
+    limpar_csv_gcs = GCSDeleteObjectsOperator(
+    task_id="limpar_csv_gcs",
+    bucket_name="airflow_vps",
+    prefix="operacao_ordem_plami-",   # deleta todos que começam com esse prefixo
+    gcp_conn_id="google_cloud_default"
+)
 
     ##MATERIAIS
     criar_tabela_temp_materiais_bq = BigQueryInsertJobOperator(

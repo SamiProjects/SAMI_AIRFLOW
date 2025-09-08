@@ -78,11 +78,12 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
             cat /opt/airflow/csv/operacao_ordem_plami.csv | \
             psql "$PG_CONN" -c "
                 COPY operacao_ordem_plami_temp (
+                    id_ordem_operacao,
+                    ordem,
                     operacao,
                     trabalho,
                     trabalho_real,
                     texto_breve_operacao,
-                    ordem,
                     descricao_ordem,
                     tipo_ordem,
                     oportunidade,
@@ -90,17 +91,26 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     centro_trabalho_operacao,
                     tag,
                     desc_tag,
+                    area,
+                    disciplina,
+                    qtd_pessoas,
+                    data_modificacao,
+                    disciplina_operacao,
+                    prioridade_nota,
+                    duracao,
+                    custo_planejado_ordem,
+                    custo_Real_ordem,
+                    revisao,
+                    vazamento,
+                    seguranca,
+                    alarme,
+                    data_criacao_ordem,
+                    nota,
+                    classificacao_prioridade,
                     criticidade,
                     status_usuario_ordem,
                     status_sistema_ordem,
                     status_sistema_operacao,
-                    revisao,
-                    data_modificacao,
-                    area,
-                    disciplina,
-                    id_ordem_operacao,
-                    disciplina_operacao,
-                    qtd_pessoas
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

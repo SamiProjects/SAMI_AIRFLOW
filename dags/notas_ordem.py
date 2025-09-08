@@ -82,7 +82,7 @@ with DAG(
                     hora_fim_base_ordem, prioridade_ordem, revisao, tag_ordem, desc_tag_ordem, criado_por_ordem, nome_criado_ordem,
                     data_criacao_ordem, modificado_por_ordem, nome_modificado_ordem, data_modificacao_ordem, objeto_nota, priorizado,
                     planejado, programado, encerrado, seguranca, vazamento, alarme, custo_planejado_ordem,custo_real_ordem,
-                    ordem_priorizada_operacao, classificacao_prioridade,nota_encerrada,disciplina,area,area_agrup,descricao_detalhada,
+                    classificacao_prioridade,nota_encerrada,disciplina,area,area_agrup,descricao_detalhada,
                     status_estoque,total_materiais
                 )
                 FROM STDIN

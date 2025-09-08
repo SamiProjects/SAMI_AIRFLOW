@@ -35,7 +35,6 @@ def limpar_arquivos_gcs(bucket_name, prefix):
         blob.delete()
         print(f"Removido: {blob.name}")
 
-
 with DAG(
     dag_id='exportar_complementar_ordem_plami',
     schedule_interval='20 7 * * *',
@@ -152,6 +151,9 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
 psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
 BEGIN;
 
+-- remove a view se existir (para não travar o DROP/RENAME da tabela base)
+DROP VIEW IF EXISTS view_operacao_ordem_aberta;
+
 -- renomeia a tabela original para backup
 ALTER TABLE operacao_ordem_plami RENAME TO operacao_ordem_plami_old;
 
@@ -164,6 +166,45 @@ CREATE INDEX IF NOT EXISTS idx_operacao_ordem_plami_ordem
 
 -- remove a tabela antiga
 DROP TABLE operacao_ordem_plami_old;
+
+-- recria a view
+CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
+SELECT 
+    p.ordem,
+    p.operacao,
+    p.trabalho,
+    p.texto_breve_operacao,
+    p.descricao_ordem,
+    p.tipo_ordem,
+    p.oportunidade,
+    p.centro_trabalho,
+    p.centro_trabalho_operacao,
+    p.tag,
+    p.area,
+    p.disciplina,
+    p.qtd_pessoas,
+    p.disciplina_operacao,
+    p.prioridade_nota,
+    p.duracao,
+    p.custo_planejado_ordem,
+    p.custo_real_ordem,
+    CASE 
+        WHEN o.ordem IS NOT NULL THEN 'SIM'
+        ELSE 'NÃO'
+    END AS ordem_priorizada_operacao,
+    p.nota,
+    p.revisao,
+    p.vazamento,
+    p.seguranca,
+    p.classificacao_prioridade,
+    p.alarme
+FROM operacao_ordem_plami p
+LEFT JOIN ordem_priorizada_operacao o
+       ON p.ordem = o.ordem
+WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
+  AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
+  AND p.oportunidade <> '3'
+  AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
 
 COMMIT;
 EOF
@@ -401,6 +442,9 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
 psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
 BEGIN;
 
+-- remove a view se existir (para não travar o DROP/RENAME da tabela base)
+DROP VIEW IF EXISTS view_ordem_geral;
+
 -- renomeia a tabela original para backup
 ALTER TABLE ordens_geral RENAME TO ordens_geral_old;
 
@@ -413,6 +457,17 @@ CREATE INDEX IF NOT EXISTS idx_ordens_geral_ordem
 
 -- remove a tabela antiga
 DROP TABLE ordens_geral_old;
+
+-- recria a view
+CREATE OR REPLACE VIEW view_ordem_geral AS
+SELECT g.*,
+       CASE 
+           WHEN o.ordem IS NOT NULL THEN 'SIM'
+           ELSE 'NÃO'
+       END AS ordem_priorizada_operacao
+FROM ordens_geral g
+LEFT JOIN ordem_priorizada_operacao o
+       ON g.ordem = o.ordem;
 
 COMMIT;
 EOF

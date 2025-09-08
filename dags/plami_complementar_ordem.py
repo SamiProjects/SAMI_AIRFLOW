@@ -6,12 +6,26 @@ from airflow.operators.bash import BashOperator
 from google.cloud import storage
 from datetime import datetime
 import os
+import fastavro
+import pandas as pd
 
 def baixar_csv_para_csv_dir(bucket_name,bucket_blob,path_download):
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(bucket_blob)
-    blob.download_to_filename(path_download)
+    avro_temp = '/opt/airflow/csv/operacao_ordem_plami.avro'
+    blob.download_to_filename(avro_temp)
+
+    # Lê Avro com fastavro
+    with open(avro_temp, "rb") as f:
+        reader = fastavro.reader(f)
+        records = [r for r in reader]
+
+    # Converte para DataFrame
+    df = pd.DataFrame(records)
+
+    # Exporta direto para CSV com delimitador \x1f
+    df.to_csv(path_download, sep="\x1f", index=False)
 
 with DAG(
     dag_id='exportar_complementar_ordem_plami',
@@ -27,7 +41,7 @@ with DAG(
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_OPERACAO_ORDEM_PLAMI` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.OPERACAO_ORDEM_PLAMI`;
+                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.OPERACAO_ORDEM_PLAMI` limit 10;
                 """,
                 "useLegacySql": False,
             }
@@ -40,7 +54,7 @@ with DAG(
         task_id='exportar_tabela_bq_gcs',
         source_project_dataset_table='sz-00022-ws.PLAMI.TMP_OPERACAO_ORDEM_PLAMI',
         destination_cloud_storage_uris=[
-            'gs://airflow_vps/operacao_ordem_plami.csv'
+            'gs://airflow_vps/operacao_ordem_plami.avro'
         ],
         export_format='CSV',
         field_delimiter='\x1f',
@@ -54,7 +68,7 @@ with DAG(
     baixar_csv = PythonOperator(
         task_id='baixar_csv_gcs',
         python_callable=baixar_csv_para_csv_dir,
-        op_args=['airflow_vps', 'operacao_ordem_plami.csv', '/opt/airflow/csv/operacao_ordem_plami.csv']
+        op_args=['airflow_vps', 'operacao_ordem_plami.avro', '/opt/airflow/csv/operacao_ordem_plami.csv']
     )
 
     criar_tabela_temp_pg = BashOperator(
@@ -146,9 +160,8 @@ EOF
 
     limpar_csv_local = BashOperator(
     task_id='limpar_csv_local',
-    bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami.csv'
+    bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami.csv /opt/airflow/csv/operacao_ordem_plami.avro'
     )  
-
 
     ##MATERIAIS
     criar_tabela_temp_materiais_bq = BigQueryInsertJobOperator(
@@ -157,7 +170,7 @@ EOF
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_MATERIAIS_ORDENS_GERAL` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.MATERIAIS_ORDENS`;
+                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.MATERIAIS_ORDENS` limit 10;
                 """,
                 "useLegacySql": False,
             }
@@ -273,7 +286,7 @@ EOF
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_ORDENS_GERAL` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.ORDENS`;
+                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.ORDENS` limit 10;
                 """,
                 "useLegacySql": False,
             }

@@ -1,3 +1,4 @@
 openai
 apache-airflow-providers-google
 matplotlib
+fastavro

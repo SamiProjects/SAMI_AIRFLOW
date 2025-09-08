@@ -88,10 +88,10 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     carregar_csv_postgres = BashOperator(
         task_id='carregar_csv_postgres',
         bash_command="""
-            for f in /opt/airflow/csv/operacao_ordem_plami-*.csv
+        for f in /opt/airflow/csv/operacao_ordem_plami-*.csv
         do
             echo "Carregando $f ..."
-            psql "$PG_CONN" -c "
+            cat "$f" | psql "$PG_CONN" -c "
                 COPY operacao_ordem_plami_temp (
                     id_ordem_operacao,
                     ordem,
@@ -127,10 +127,11 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     status_sistema_ordem,
                     status_sistema_operacao
                 )
-                FROM '$f'
+                FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
             "
         done
+
         """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )

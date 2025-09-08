@@ -6,26 +6,13 @@ from airflow.operators.bash import BashOperator
 from google.cloud import storage
 from datetime import datetime
 import os
-import fastavro
 import pandas as pd
 
-def baixar_csv_para_csv_dir(bucket_name,bucket_blob,path_download):
-    client = storage.Client()
-    bucket = client.get_bucket(bucket_name)
-    blob = bucket.blob(bucket_blob)
-    avro_temp = '/opt/airflow/csv/operacao_ordem_plami.avro'
-    blob.download_to_filename(avro_temp)
-
-    # Lê Avro com fastavro
-    with open(avro_temp, "rb") as f:
-        reader = fastavro.reader(f)
-        records = [r for r in reader]
-
-    # Converte para DataFrame
-    df = pd.DataFrame(records)
-
-    # Exporta direto para CSV com delimitador \x1f
-    df.to_csv(path_download, sep="\x1f", index=False)
+def baixar_csv_para_csv_dir(bucket_name,bucket_blob,path_download): 
+    client = storage.Client() 
+    bucket = client.get_bucket(bucket_name) 
+    blob = bucket.blob(bucket_blob) 
+    blob.download_to_filename(path_download)
 
 with DAG(
     dag_id='exportar_complementar_ordem_plami',
@@ -41,7 +28,7 @@ with DAG(
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_OPERACAO_ORDEM_PLAMI` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.OPERACAO_ORDEM_PLAMI` limit 10;
+                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.OPERACAO_ORDEM_PLAMI`;
                 """,
                 "useLegacySql": False,
             }
@@ -54,7 +41,7 @@ with DAG(
         task_id='exportar_tabela_bq_gcs',
         source_project_dataset_table='sz-00022-ws.PLAMI.TMP_OPERACAO_ORDEM_PLAMI',
         destination_cloud_storage_uris=[
-            'gs://airflow_vps/operacao_ordem_plami.avro'
+            'gs://airflow_vps/operacao_ordem_plami-*.csv'
         ],
         export_format='CSV',
         field_delimiter='\x1f',
@@ -65,10 +52,12 @@ with DAG(
         force_rerun=True,
     )   
 
-    baixar_csv = PythonOperator(
+    baixar_csv = BashOperator(
         task_id='baixar_csv_gcs',
-        python_callable=baixar_csv_para_csv_dir,
-        op_args=['airflow_vps', 'operacao_ordem_plami.avro', '/opt/airflow/csv/operacao_ordem_plami.csv']
+        bash_command="""
+        mkdir -p /opt/airflow/csv/
+        gsutil cp gs://airflow_vps/operacao_ordem_plami-*.csv /opt/airflow/csv/
+    """
     )
 
     criar_tabela_temp_pg = BashOperator(
@@ -89,7 +78,9 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     carregar_csv_postgres = BashOperator(
         task_id='carregar_csv_postgres',
         bash_command="""
-            cat /opt/airflow/csv/operacao_ordem_plami.csv | \
+            for f in /opt/airflow/csv/operacao_ordem_plami-*.csv
+        do
+            echo "Carregando $f ..."
             psql "$PG_CONN" -c "
                 COPY operacao_ordem_plami_temp (
                     id_ordem_operacao,
@@ -113,7 +104,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     prioridade_nota,
                     duracao,
                     custo_planejado_ordem,
-                    custo_Real_ordem,
+                    custo_real_ordem,
                     revisao,
                     vazamento,
                     seguranca,
@@ -124,11 +115,12 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     criticidade,
                     status_usuario_ordem,
                     status_sistema_ordem,
-                    status_sistema_operacao,
+                    status_sistema_operacao
                 )
-                FROM STDIN
+                FROM '$f'
                 DELIMITER E'\\x1f' CSV HEADER;
             "
+        done
         """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -160,8 +152,15 @@ EOF
 
     limpar_csv_local = BashOperator(
     task_id='limpar_csv_local',
-    bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami.csv /opt/airflow/csv/operacao_ordem_plami.avro'
+    bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami*.csv'
     )  
+
+    limpar_csv_gcs = BashOperator(
+    task_id='limpar_csv_gcs',
+    bash_command="""
+        gsutil rm -f gs://airflow_vps/operacao_ordem_plami-*.csv || true
+    """
+    )
 
     ##MATERIAIS
     criar_tabela_temp_materiais_bq = BigQueryInsertJobOperator(
@@ -170,7 +169,7 @@ EOF
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_MATERIAIS_ORDENS_GERAL` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.MATERIAIS_ORDENS` limit 10;
+                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.MATERIAIS_ORDENS`;
                 """,
                 "useLegacySql": False,
             }
@@ -278,7 +277,7 @@ EOF
     task_id='limpar_csv_local_materiais',
     bash_command='rm -f /opt/airflow/csv/materiais_ordens_geral.csv'
     )
-    
+
     #COLETANDO TODAS AS ORDENS
     criar_tabela_temp_ordens_bq = BigQueryInsertJobOperator(
         task_id='criar_tabela_temp_ordens_bq',
@@ -286,7 +285,7 @@ EOF
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_ORDENS_GERAL` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.ORDENS` limit 10;
+                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.ORDENS`;
                 """,
                 "useLegacySql": False,
             }
@@ -313,7 +312,7 @@ EOF
     baixar_csv_ordens = PythonOperator(
         task_id='baixar_csv_ordens',
         python_callable=baixar_csv_para_csv_dir,
-        op_args=['airflow_vps', 'ordens_geral.csv', '/opt/airflow/csv/ordens_geral.csv']
+        op_args=['airflow_vps', 'ordens_geral.csv','/opt/airflow/csv/ordens_geral.csv']
     )
     
     criar_tabela_temp_ordens_pg = BashOperator(
@@ -406,6 +405,6 @@ EOF
     bash_command='rm -f /opt/airflow/csv/ordens_geral.csv'
     )
 
-    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local
+    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csv_gcs
     criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> swap_tabelas_materiais >> limpar_csv_local_materiais 
     criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens

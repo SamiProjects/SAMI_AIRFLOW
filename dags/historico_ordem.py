@@ -107,7 +107,7 @@ with DAG(
     carregar_bigquery = GCSToBigQueryOperator(
         task_id="carregar_bigquery",
         bucket="airflow_vps",
-        source_objects=["historico/ordens_{{ ds }}.json"], 
+        source_objects=["historico/ordens_{{ next_ds }}.json"], 
         destination_project_dataset_table="sz-00022-ws.TABELAS_SAP.HISTORICO_ORDENS",
         source_format="NEWLINE_DELIMITED_JSON",
         schema_fields=[

@@ -83,7 +83,7 @@ with DAG(
                     data_criacao_ordem, modificado_por_ordem, nome_modificado_ordem, data_modificacao_ordem, objeto_nota, priorizado,
                     planejado, programado, encerrado, seguranca, vazamento, alarme, custo_planejado_ordem,custo_real_ordem,
                     classificacao_prioridade,nota_encerrada,disciplina,area,area_agrup,descricao_detalhada,
-                    status_estoque,total_materiais
+                    status_estoque,total_materiais,vencimento_priorizacao
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

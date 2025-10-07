@@ -298,7 +298,8 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     revisao,
                     tipo_material,
                     data_modificacao,
-                    qtd_estoque
+                    qtd_estoque,
+                    confirmacao_final
                     
                 )
                 FROM STDIN

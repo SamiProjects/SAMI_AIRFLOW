@@ -134,7 +134,8 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     criticidade,
                     status_usuario_ordem,
                     status_sistema_ordem,
-                    status_sistema_operacao
+                    status_sistema_operacao,
+                    valor_descontado
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

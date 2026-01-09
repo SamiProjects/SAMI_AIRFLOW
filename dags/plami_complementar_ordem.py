@@ -49,7 +49,7 @@ with DAG(
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_OPERACAO_ORDEM_PLAMI` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.OPERACAO_ORDEM_PLAMI`;
+                    SELECT * FROM `sz-00022-ws.PLAMI.OPERACAO_ORDENS`;
                 """,
                 "useLegacySql": False,
             }
@@ -235,7 +235,7 @@ EOF
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_MATERIAIS_ORDENS_GERAL` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.MATERIAIS_ORDENS`;
+                    SELECT * FROM `sz-00022-ws.PLAMI.MATERIAIS_ORDENS`;
                 """,
                 "useLegacySql": False,
             }
@@ -288,6 +288,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                 COPY materiais_ordem_geral_temp (
                     item_ordem,
                     ordem,
+                    descricao_ordem,
                     material,
                     texto_material,
                     quantidade_necessaria,
@@ -303,9 +304,14 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     revisao,
                     tipo_material,
                     data_modificacao,
+                    area,
+                    disciplina,
+                    id_ordem_item,
+                    reserva,
+                    centro_custo_ordem,
                     qtd_estoque,
-                    confirmacao_final
-                    
+                    confirmacao_final,
+                    centro_custo
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
@@ -352,7 +358,7 @@ EOF
             "query": {
                 "query": """
                     CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_ORDENS_GERAL` AS
-                    SELECT * FROM `sz-00022-ws.TABELAS_SAP.ORDENS`;
+                    SELECT * FROM `sz-00022-ws.PLAMI.ORDENS`;
                 """,
                 "useLegacySql": False,
             }
@@ -423,16 +429,18 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     hora_inicio_base_ordem,
                     fim_base_ordem,
                     hora_fim_base_ordem,
-                    prioridade_ordem,
+                    prioridade_nota,
                     nome_criado_ordem,
                     nome_modificado_ordem,
                     planejado,
                     programado,
                     encerrado,
                     area,
+                    disciplina,
+                    prioridade_ordem,
                     custo_planejado,
-                    custo_real
-                    
+                    custo_real,
+                    valor_descontado
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

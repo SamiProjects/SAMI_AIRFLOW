@@ -36,7 +36,7 @@ def limpar_arquivos_gcs(bucket_name, prefix):
         print(f"Removido: {blob.name}")
  
 with DAG(
-    dag_id='exportar_complementar_ordem_plami',
+    dag_id='exportar_materiais',
     schedule_interval='30 3 * * *',
     start_date=datetime(2026, 1, 1),
     catchup=False,

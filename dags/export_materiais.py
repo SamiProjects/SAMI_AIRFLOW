@@ -61,7 +61,7 @@ with DAG(
  
     exportar_materiais_para_gcs = BigQueryToGCSOperator(
         task_id='exportar_materiais_para_gcs',
-        source_project_dataset_table='sz-00022-ws.PLAMI.TMP_MATERIAIS',
+        source_project_dataset_table='sz-00022-ws.TABELAS_SAP.TMP_MATERIAIS',
         destination_cloud_storage_uris=[
             'gs://airflow_vps/materiais.csv'
         ],

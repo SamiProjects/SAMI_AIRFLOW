@@ -37,7 +37,7 @@ def limpar_arquivos_gcs(bucket_name, prefix):
 
 with DAG(
     dag_id='exportar_complementar_ordem_plami',
-    schedule_interval='5 6-18/3 * * *',
+    schedule_interval='5 6-18/3 * * 1-5',
     start_date=datetime(2025, 9, 1),
     catchup=False,
     tags=['bigquery', 'gcs', 'exportacao','plami'],
@@ -122,20 +122,11 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     disciplina_operacao,
                     prioridade_nota,
                     duracao,
-                    custo_planejado_ordem,
-                    custo_real_ordem,
                     revisao,
-                    vazamento,
-                    seguranca,
-                    alarme,
-                    data_criacao_ordem,
-                    nota,
-                    classificacao_prioridade,
                     criticidade,
                     status_usuario_ordem,
                     status_sistema_ordem,
-                    status_sistema_operacao,
-                    valor_descontado
+                    status_sistema_operacao
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
@@ -149,71 +140,28 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     swap_tabelas = BashOperator(
         task_id='swap_tabelas',
         bash_command="""
-psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
-BEGIN;
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
 
--- remove a view se existir (para não travar o DROP/RENAME da tabela base)
-DROP VIEW IF EXISTS view_operacao_ordem_aberta;
+    -- remove a view se existir (para não travar o DROP/RENAME da tabela base)
+    DROP VIEW IF EXISTS view_operacao_ordem_aberta;
 
--- renomeia a tabela original para backup
-ALTER TABLE operacao_ordem_plami RENAME TO operacao_ordem_plami_old;
+    -- renomeia a tabela original para backup
+    ALTER TABLE operacao_ordem_plami RENAME TO operacao_ordem_plami_old;
 
--- renomeia a staging para virar a definitiva
-ALTER TABLE operacao_ordem_plami_temp RENAME TO operacao_ordem_plami;
+    -- renomeia a staging para virar a definitiva
+    ALTER TABLE operacao_ordem_plami_temp RENAME TO operacao_ordem_plami;
 
--- cria índice na coluna ordem
-CREATE INDEX IF NOT EXISTS idx_operacao_ordem_plami_ordem
-    ON operacao_ordem_plami (ordem);
+    -- cria índice na coluna ordem
+    CREATE INDEX IF NOT EXISTS idx_operacao_ordem_plami_ordem
+        ON operacao_ordem_plami (ordem);
 
--- remove a tabela antiga
-DROP TABLE operacao_ordem_plami_old;
+    -- remove a tabela antiga
+    DROP TABLE operacao_ordem_plami_old;
 
--- recria a view
-CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
-SELECT 
-    p.ordem,
-    p.operacao,
-    p.trabalho,
-    p.texto_breve_operacao,
-    p.descricao_ordem,
-    p.tipo_ordem,
-    p.oportunidade,
-    p.centro_trabalho,
-    p.centro_trabalho_operacao,
-    p.tag,
-    p.area,
-    p.disciplina,
-    p.qtd_pessoas,
-    p.disciplina_operacao,
-    p.prioridade_nota,
-    p.duracao,
-    p.custo_planejado_ordem,
-    p.custo_real_ordem,
-    CASE 
-        WHEN o.ordem IS NOT NULL THEN 'SIM'
-        ELSE 'NÃO'
-    END AS ordem_priorizada_operacao,
-    p.nota,
-    p.revisao,
-    p.vazamento,
-    p.seguranca,
-    p.classificacao_prioridade,
-    p.alarme,
-    p.valor_descontado
-FROM operacao_ordem_plami p
-LEFT JOIN ordem_priorizada_operacao o
-       ON p.ordem = o.ordem
-WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
-  AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
-  AND p.status_sistema_ordem NOT ILIKE '%ELIM%'
-  AND p.status_sistema_ordem NOT ILIKE '%CONF%'
-  AND p.oportunidade <> '3'
-  AND p.trabalho > 0
-  AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
-
-COMMIT;
-EOF
-""",
+    COMMIT;
+    EOF
+    """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
 
@@ -324,25 +272,25 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     swap_tabelas_materiais = BashOperator(
         task_id='swap_tabelas_materiais',
         bash_command="""
-psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
-BEGIN;
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
 
--- renomeia a tabela original para backup
-ALTER TABLE materiais_ordem_geral RENAME TO materiais_ordem_geral_old;
+    -- renomeia a tabela original para backup
+    ALTER TABLE materiais_ordem_geral RENAME TO materiais_ordem_geral_old;
 
--- renomeia a staging para virar a definitiva
-ALTER TABLE materiais_ordem_geral_temp RENAME TO materiais_ordem_geral;
+    -- renomeia a staging para virar a definitiva
+    ALTER TABLE materiais_ordem_geral_temp RENAME TO materiais_ordem_geral;
 
--- cria índice na coluna ordem
-CREATE INDEX IF NOT EXISTS idx_materiais_ordem_plami
-    ON materiais_ordem_geral (ordem);
+    -- cria índice na coluna ordem
+    CREATE INDEX IF NOT EXISTS idx_materiais_ordem_plami
+        ON materiais_ordem_geral (ordem);
 
--- remove a tabela antiga
-DROP TABLE materiais_ordem_geral_old;
+    -- remove a tabela antiga
+    DROP TABLE materiais_ordem_geral_old;
 
-COMMIT;
-EOF
-""",
+    COMMIT;
+    EOF
+    """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
         
@@ -357,7 +305,7 @@ EOF
     op_args=["airflow_vps", "materiais_ordens_geral-"],
     )
 
-    #COLETANDO TODAS AS ORDENS
+    #ORDENS
     criar_tabela_temp_ordens_bq = BigQueryInsertJobOperator(
         task_id='criar_tabela_temp_ordens_bq',
         configuration={
@@ -443,10 +391,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     encerrado,
                     area,
                     disciplina,
-                    prioridade_ordem,
-                    custo_planejado,
-                    custo_real,
-                    valor_descontado
+                    prioridade_ordem
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
@@ -459,39 +404,28 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     swap_tabelas_ordens = BashOperator(
         task_id='swap_tabelas_ordens',
         bash_command="""
-psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
-BEGIN;
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
 
--- remove a view se existir (para não travar o DROP/RENAME da tabela base)
-DROP VIEW IF EXISTS view_ordem_geral;
+    -- remove a view se existir (para não travar o DROP/RENAME da tabela base)
+    DROP VIEW IF EXISTS view_ordem_geral;
 
--- renomeia a tabela original para backup
-ALTER TABLE ordens_geral RENAME TO ordens_geral_old;
+    -- renomeia a tabela original para backup
+    ALTER TABLE ordens_geral RENAME TO ordens_geral_old;
 
--- renomeia a staging para virar a definitiva
-ALTER TABLE ordens_geral_temp RENAME TO ordens_geral;
+    -- renomeia a staging para virar a definitiva
+    ALTER TABLE ordens_geral_temp RENAME TO ordens_geral;
 
--- cria índice na coluna ordem
-CREATE INDEX IF NOT EXISTS idx_ordens_geral_ordem
-    ON ordens_geral (ordem);
+    -- cria índice na coluna ordem
+    CREATE INDEX IF NOT EXISTS idx_ordens_geral_ordem
+        ON ordens_geral (ordem);
 
--- remove a tabela antiga
-DROP TABLE ordens_geral_old;
+    -- remove a tabela antiga
+    DROP TABLE ordens_geral_old;
 
--- recria a view
-CREATE OR REPLACE VIEW view_ordem_geral AS
-SELECT g.*,
-       CASE 
-           WHEN o.ordem IS NOT NULL THEN 'SIM'
-           ELSE 'NÃO'
-       END AS ordem_priorizada_operacao
-FROM ordens_geral g
-LEFT JOIN ordem_priorizada_operacao o
-       ON g.ordem = o.ordem;
-
-COMMIT;
-EOF
-""",
+    COMMIT;
+    EOF
+    """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
 
@@ -506,6 +440,387 @@ EOF
     op_args=["airflow_vps", "ordens_geral-"],
     )
     
-    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv_operacao >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csvs_task_operacao
-    criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> swap_tabelas_materiais >> limpar_csv_local_materiais >> limpar_csvs_task_materiais
-    criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens >> limpar_csvs_task_ordens
+    #CUSTO DESCONTO ORDENS
+    criar_tabela_temp_custo_bq = BigQueryInsertJobOperator(
+        task_id='criar_tabela_temp_custo_bq',
+        configuration={
+            "query": {
+                "query": """
+                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_CUSTO_DESCONTO_ORDEM` AS
+                    SELECT * FROM `sz-00022-ws.PLAMI.CUSTO_DESCONTO_ORDEM`;
+                """,
+                "useLegacySql": False,
+            }
+        },
+        location='southamerica-east1',
+        gcp_conn_id='google_cloud_default'
+    )
+
+    exportar_custo_para_gcs = BigQueryToGCSOperator(
+        task_id='exportar_custo_geral_para_gcs',
+        source_project_dataset_table='sz-00022-ws.PLAMI.TMP_CUSTO_DESCONTO_ORDEM',
+        destination_cloud_storage_uris=[
+            'gs://airflow_vps/custo-*.csv'
+        ],
+        export_format='CSV',
+        field_delimiter='\x1f',
+        print_header=True,
+        compression='NONE',
+        gcp_conn_id='google_cloud_default',
+        location='southamerica-east1',
+        force_rerun=True,
+    )
+
+    baixar_csv_custo = PythonOperator(
+    task_id="baixar_csvs_gcs_custo",
+    python_callable=baixar_csvs,
+    op_args=["airflow_vps", "custo-", "/opt/airflow/csv"],
+   )
+    
+    criar_tabela_temp_custo_pg = BashOperator(
+        task_id='criar_tabela_temp_custo_pg',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
+        DROP TABLE IF EXISTS custo_temp;
+        CREATE TABLE custo_temp
+        (LIKE custo INCLUDING DEFAULTS INCLUDING GENERATED INCLUDING IDENTITY INCLUDING STORAGE);
+
+        -- remove apenas o índice se existir
+        DROP INDEX IF EXISTS idx_custo_ordem ;
+    "
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    carregar_csv_custo_postgres = BashOperator(
+        task_id='carregar_csv_custo_postgres',
+        bash_command="""
+            cat /opt/airflow/csv/custo-*.csv | \
+            psql "$PG_CONN" -c "
+                COPY custo_temp (
+                    ordem,
+                    codigo,
+                    descricao,
+                    estimado,
+                    planejado,
+                    real,
+                    valor_descontado
+                )
+                FROM STDIN
+                DELIMITER E'\\x1f' CSV HEADER;
+                
+            "
+        """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    swap_tabelas_custo = BashOperator(
+        task_id='swap_tabelas_custo',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
+
+    -- renomeia a tabela original para backup
+    ALTER TABLE custo RENAME TO custo_old;
+
+    -- renomeia a staging para virar a definitiva
+    ALTER TABLE custo_temp RENAME TO custo;
+
+    -- remove a tabela antiga
+    DROP TABLE custo_old;
+
+    COMMIT;
+    EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    limpar_csv_local_custo = BashOperator(
+    task_id='limpar_csv_local_custo',
+    bash_command='rm -f /opt/airflow/csv/custo-*.csv'
+    )
+
+    limpar_csvs_task_custo = PythonOperator(
+    task_id="limpar_csvs_gcs_custo",
+    python_callable=limpar_arquivos_gcs,
+    op_args=["airflow_vps", "custo-"],
+    )
+    
+    #NOTAS_ORDEM
+    criar_tabela_temp_notas_bq = BigQueryInsertJobOperator(
+        task_id='criar_tabela_temp_notas_bq',
+        configuration={
+            "query": {
+                "query": """
+                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS` AS
+                    SELECT * FROM `sz-00022-ws.PLAMI.NOTAS_ORDENS`;
+                """,
+                "useLegacySql": False,
+            }
+        },
+        location='southamerica-east1',
+        gcp_conn_id='google_cloud_default'
+    )
+  
+    exportar_notas_para_gcs = BigQueryToGCSOperator(
+        task_id='exportar_notas_para_gcs',
+        source_project_dataset_table='sz-00022-ws.PLAMI.TMP_NOTAS_ORDENS',
+        destination_cloud_storage_uris=[
+            'gs://airflow_vps/notas_ordem-*.csv'
+        ],
+        export_format='CSV',
+        field_delimiter='\x1f',
+        print_header=True,
+        compression='NONE',
+        gcp_conn_id='google_cloud_default',
+        location='southamerica-east1',
+        force_rerun=True,
+    )   
+
+    baixar_csv_notas = PythonOperator(
+    task_id="baixar_csvs_gcs_notas",
+    python_callable=baixar_csvs,
+    op_args=["airflow_vps", "notas_ordem-", "/opt/airflow/csv"],
+   )
+
+    criar_tabela_temp_notas_pg = BashOperator(
+        task_id='criar_tabela_temp_pg',
+        bash_command="""
+            psql "$PG_CONN" -c "
+                DROP TABLE IF EXISTS notas_ordem_temp;
+                CREATE TABLE notas_ordem_temp (LIKE notas_ordem INCLUDING ALL);
+            "
+        """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    carregar_csv_notas_postgres = BashOperator(
+        task_id='carregar_csv_postgres',
+        bash_command="""
+            cat /opt/airflow/csv/notas_ordem-*.csv | \
+            psql "$PG_CONN" -c "
+                COPY notas_ordem_temp (
+                    nota, tipo_nota, descricao, status_usuario, status_sistema, ordem, tag, desc_tag, tag_desc, criticidade,
+                    grupo_planejamento, centro_trabalho, autor, nome_autor, criado_por, nome_criado, criado, modificado_por,
+                    nome_modificado, modificado, data_nota, hora_nota, inicio_desejado, hora_inicio_desejado, fim_desejado,
+                    hora_fim_desejado, oportunidade, tipo_prioridade, tipo_servico, tipo_impacto, grau_impacto, probabilidade,
+                    prioridade, data_mod_prioridade, tipo_ordem, descricao_ordem, status_usuario_ordem, status_sistema_ordem,
+                    centro_trabalho_ordem, grupo_planejamento_ordem, inicio_base_ordem, hora_inicio_base_ordem, fim_base_ordem,
+                    hora_fim_base_ordem, prioridade_ordem, revisao, tag_ordem, desc_tag_ordem, criado_por_ordem, nome_criado_ordem,
+                    data_criacao_ordem, modificado_por_ordem, nome_modificado_ordem, data_modificacao_ordem, objeto_nota, priorizado,
+                    planejado, programado, encerrado, seguranca, vazamento, alarme,
+                    classificacao_prioridade,nota_encerrada,disciplina,area,area_agrup,descricao_detalhada,
+                    status_estoque,total_materiais,vencimento_priorizacao
+                )
+                FROM STDIN
+                DELIMITER E'\\x1f' CSV HEADER;
+            "
+        """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    swap_tabelas_notas = BashOperator(
+        task_id='swap_tabelas_notas',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
+
+    -- backup da tabela filha 
+    DROP TABLE IF EXISTS notas_priorizadas_temp;
+    CREATE TEMP TABLE notas_priorizadas_temp AS SELECT * FROM notas_priorizadas;
+
+    -- truncate na pai e filhas 
+    TRUNCATE notas_ordem CASCADE;
+
+    -- recarrega a pai 
+    INSERT INTO notas_ordem SELECT * FROM notas_ordem_temp;
+
+    -- restaura a filha 
+    INSERT INTO notas_priorizadas SELECT * FROM notas_priorizadas_temp;
+
+    -- limpa staging 
+    DROP TABLE notas_ordem_temp;
+
+    COMMIT;
+    EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    limpar_csv_local_notas = BashOperator(
+    task_id='limpar_csv_local_notas',
+    bash_command='rm -f /opt/airflow/csv/notas_ordem-*.csv'
+    )
+
+    limpar_csvs_task_notas = PythonOperator(
+    task_id="limpar_csvs_gcs_notas",
+    python_callable=limpar_arquivos_gcs,
+    op_args=["airflow_vps", "notas_ordem-"],
+    )
+
+    #VIEWS
+    criar_views = BashOperator(
+        task_id='criar_views',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
+
+    -- recria a view de operacoes
+    CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
+    SELECT 
+        p.ordem,
+        p.operacao,
+        p.trabalho,
+        p.texto_breve_operacao,
+        p.descricao_ordem,
+        p.tipo_ordem,
+        p.oportunidade,
+        p.centro_trabalho,
+        p.centro_trabalho_operacao,
+        p.tag,
+        p.area,
+        p.disciplina,
+        p.qtd_pessoas,
+        p.disciplina_operacao,
+        p.prioridade_nota,
+        p.duracao,
+        c.custo_planejado_ordem,
+        c.custo_real_ordem,
+        CASE 
+            WHEN o.ordem IS NOT NULL THEN 'SIM'
+            ELSE 'NÃO'
+        END AS ordem_priorizada_operacao,
+        n.nota,
+        p.revisao,
+        n.vazamento,
+        n.seguranca,
+        n.classificacao_prioridade,
+        n.alarme,
+        c.valor_descontado
+    FROM operacao_ordem_plami p
+    LEFT JOIN ordem_priorizada_operacao o
+        ON p.ordem = o.ordem
+    LEFT JOIN (select ordem,sum(planejado) as planejado,sum(real),min(valor_descontado) from custo group by ordem) c 
+        ON c.ordem = p.ordem
+    LEFT JOIN notas_ordem n
+        ON n.ordem = p.ordem
+    WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
+    AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
+    AND p.status_sistema_ordem NOT ILIKE '%ELIM%'
+    AND p.status_sistema_ordem NOT ILIKE '%CONF%'
+    AND p.oportunidade <> '3'
+    AND p.trabalho > 0
+    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
+
+    -- recria a view de notas_ordem
+    CREATE OR REPLACE VIEW "public"."view_notas_ordem" AS
+    SELECT
+    n.nome_autor,
+    n.criado_por,
+    n.nome_criado,
+    n.criado,
+    n.modificado_por,
+    n.nome_modificado,
+    n.modificado,
+    n.data_nota,
+    n.hora_nota,
+    n.inicio_desejado,
+    n.hora_inicio_desejado,
+    n.fim_desejado,
+    n.hora_fim_desejado,
+    n.oportunidade,
+    n.tipo_prioridade,
+    n.tipo_servico,
+    n.tipo_impacto,
+    n.grau_impacto,
+    n.probabilidade,
+    n.prioridade,
+    n.data_mod_prioridade,
+    n.tipo_ordem,
+    n.descricao_ordem,
+    n.status_usuario_ordem,
+    n.status_sistema_ordem,
+    n.centro_trabalho_ordem,
+    n.grupo_planejamento_ordem,
+    n.inicio_base_ordem,
+    n.hora_inicio_base_ordem,
+    n.fim_base_ordem,
+    n.hora_fim_base_ordem,
+    n.prioridade_ordem,
+    n.revisao,
+    n.tag_ordem,
+    n.desc_tag_ordem,
+    n.criado_por_ordem,
+    n.nome_criado_ordem,
+    n.data_criacao_ordem,
+    n.modificado_por_ordem,
+    n.nome_modificado_ordem,
+    n.data_modificacao_ordem,
+    n.objeto_nota,
+    n.priorizado,
+    n.planejado,
+    n.programado,
+    n.encerrado,
+    n.seguranca,
+    n.vazamento,
+    n.alarme,
+    c.custo_planejado_ordem,
+    c.custo_real_ordem,
+    n.classificacao_prioridade,
+    n.nota,
+    n.tipo_nota,
+    n.descricao,
+    n.status_usuario,
+    n.status_sistema,
+    n.ordem,
+    n.tag,
+    n.desc_tag,
+    n.tag_desc,
+    n.criticidade,
+    n.grupo_planejamento,
+    n.centro_trabalho,
+    n.autor,
+    n.nota_encerrada,
+    n.disciplina,
+    n.area,
+    n.area_agrup,
+    n.descricao_detalhada,
+    n.status_estoque,
+    n.total_materiais,
+    n.vencimento_priorizacao,
+    CASE
+        WHEN o.ordem IS NOT NULL THEN 'SIM'
+        ELSE 'NÃO'
+    END AS ordem_priorizada_operacao
+    FROM
+    notas_ordem n
+    LEFT JOIN ordem_priorizada_operacao o ON n.ordem = o.ordem
+    LEFT JOIN custo c ON c.ordem = n.ordem;
+
+    
+    -- recria a view de ordens
+    CREATE OR REPLACE VIEW view_ordem_geral AS
+    SELECT g.*,
+        CASE 
+            WHEN o.ordem IS NOT NULL THEN 'SIM'
+            ELSE 'NÃO'
+        END AS ordem_priorizada_operacao
+    FROM ordens_geral g
+    LEFT JOIN ordem_priorizada_operacao o
+        ON g.ordem = o.ordem;
+
+    COMMIT;
+    EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+    
+    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv_operacao >> criar_tabela_temp_pg >> carregar_csv_postgres >> limpar_csv_local >> limpar_csvs_task_operacao
+    criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> limpar_csv_local_materiais >> limpar_csvs_task_materiais
+    criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> limpar_csv_local_ordens >> limpar_csvs_task_ordens
+    criar_tabela_temp_custo_bq >> exportar_custo_para_gcs >> baixar_csv_custo >> criar_tabela_temp_custo_pg >> carregar_csv_custo_postgres >> limpar_csv_local_custo >> limpar_csvs_task_custo
+    criar_tabela_temp_notas_bq >> exportar_notas_para_gcs >> baixar_csv_notas >> criar_tabela_temp_notas_pg >> carregar_csv_notas_postgres >> limpar_csv_local_notas >> limpar_csvs_task_notas
+
+    finais = [limpar_csvs_task_operacao,limpar_csvs_task_materiais,limpar_csvs_task_ordens,limpar_csvs_task_custo,limpar_csvs_task_notas]
+
+    finais >> [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas] >> criar_views

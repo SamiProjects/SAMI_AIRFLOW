@@ -73,8 +73,8 @@ with DAG(
         force_rerun=True,
     )   
 
-    baixar_csv = PythonOperator(
-    task_id="baixar_csvs_gcs",
+    baixar_csv_operacao = PythonOperator(
+    task_id="baixar_csvs_gcs_operacao",
     python_callable=baixar_csvs,
     op_args=["airflow_vps", "operacao_ordem_plami-", "/opt/airflow/csv"],
    )
@@ -219,11 +219,11 @@ EOF
 
     limpar_csv_local = BashOperator(
     task_id='limpar_csv_local',
-    bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami*.csv'
+    bash_command='rm -f /opt/airflow/csv/operacao_ordem_plami-*.csv'
     )  
 
-    limpar_csvs_task_operacoes = PythonOperator(
-    task_id="limpar_csvs_gcs_operacoes",
+    limpar_csvs_task_operacao = PythonOperator(
+    task_id="limpar_csvs_gcs_operacao",
     python_callable=limpar_arquivos_gcs,
     op_args=["airflow_vps", "operacao_ordem_plami-"],
     )
@@ -248,7 +248,7 @@ EOF
         task_id='exportar_para_materiais_gcs',
         source_project_dataset_table='sz-00022-ws.PLAMI.TMP_MATERIAIS_ORDENS_GERAL',
         destination_cloud_storage_uris=[
-            'gs://airflow_vps/materiais_ordens_geral.csv'
+            'gs://airflow_vps/materiais_ordens_geral-*.csv'
         ],
         export_format='CSV',
         field_delimiter='\x1f',
@@ -260,9 +260,9 @@ EOF
     )
 
     baixar_csv_materiais = PythonOperator(
-        task_id='baixar_csv_materiais',
-        python_callable=baixar_csv_para_csv_dir,
-        op_args=['airflow_vps', 'materiais_ordens_geral.csv', '/opt/airflow/csv/materiais_ordens_geral.csv']
+    task_id='baixar_csvs_gcs_materiais',
+    python_callable=baixar_csvs,
+    op_args=["airflow_vps", "materiais_ordens_geral-", "/opt/airflow/csv"],
     )
 
     criar_tabela_temp_materiais_pg = BashOperator(
@@ -283,7 +283,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     carregar_csv_materiais_postgres = BashOperator(
         task_id='carregar_csv_materiais_postgres',
         bash_command="""
-            cat /opt/airflow/csv/materiais_ordens_geral.csv | \
+            cat /opt/airflow/csv/materiais_ordens_geral-*.csv | \
             psql "$PG_CONN" -c "
                 COPY materiais_ordem_geral_temp (
                     item_ordem,
@@ -348,13 +348,13 @@ EOF
         
     limpar_csv_local_materiais = BashOperator(
     task_id='limpar_csv_local_materiais',
-    bash_command='rm -f /opt/airflow/csv/materiais_ordens_geral.csv'
+    bash_command='rm -f /opt/airflow/csv/materiais_ordens_geral-*.csv'
     )
 
     limpar_csvs_task_materiais = PythonOperator(
     task_id="limpar_csvs_gcs_materiais",
     python_callable=limpar_arquivos_gcs,
-    op_args=["airflow_vps", "materiais_ordens_geral"],
+    op_args=["airflow_vps", "materiais_ordens_geral-"],
     )
 
     #COLETANDO TODAS AS ORDENS
@@ -377,7 +377,7 @@ EOF
         task_id='exportar_ordens_geral_para_gcs',
         source_project_dataset_table='sz-00022-ws.PLAMI.TMP_ORDENS_GERAL',
         destination_cloud_storage_uris=[
-            'gs://airflow_vps/ordens_geral.csv'
+            'gs://airflow_vps/ordens_geral-*.csv'
         ],
         export_format='CSV',
         field_delimiter='\x1f',
@@ -389,10 +389,10 @@ EOF
     )
 
     baixar_csv_ordens = PythonOperator(
-        task_id='baixar_csv_ordens',
-        python_callable=baixar_csv_para_csv_dir,
-        op_args=['airflow_vps', 'ordens_geral.csv','/opt/airflow/csv/ordens_geral.csv']
-    )
+    task_id="baixar_csvs_gcs_ordens",
+    python_callable=baixar_csvs,
+    op_args=["airflow_vps", "ordens_geral-", "/opt/airflow/csv"],
+   )
     
     criar_tabela_temp_ordens_pg = BashOperator(
         task_id='criar_tabela_temp_ordens_pg',
@@ -412,7 +412,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     carregar_csv_ordens_postgres = BashOperator(
         task_id='carregar_csv_ordens_postgres',
         bash_command="""
-            cat /opt/airflow/csv/ordens_geral.csv | \
+            cat /opt/airflow/csv/ordens_geral-*.csv | \
             psql "$PG_CONN" -c "
                 COPY ordens_geral_temp (
                     ordem,
@@ -497,15 +497,15 @@ EOF
 
     limpar_csv_local_ordens = BashOperator(
     task_id='limpar_csv_local_ordens',
-    bash_command='rm -f /opt/airflow/csv/ordens_geral.csv'
+    bash_command='rm -f /opt/airflow/csv/ordens_geral-*.csv'
     )
 
-    limpar_csvs_task_materiais = PythonOperator(
+    limpar_csvs_task_ordens = PythonOperator(
     task_id="limpar_csvs_gcs_ordens",
     python_callable=limpar_arquivos_gcs,
-    op_args=["airflow_vps", "ordens_geral"],
+    op_args=["airflow_vps", "ordens_geral-"],
     )
-
-    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csvs_task_operacoes
-    criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> swap_tabelas_materiais >> limpar_csv_local_materiais 
-    criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens
+    
+    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv_operacao >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csvs_task_operacao
+    criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> swap_tabelas_materiais >> limpar_csv_local_materiais >> limpar_csvs_task_materiais
+    criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens >> limpar_csvs_task_ordens

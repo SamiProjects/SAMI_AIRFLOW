@@ -8,6 +8,15 @@ from google.cloud import storage
 import datetime
 import os
 
+def limpar_arquivos_gcs(bucket_name, prefix):
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blobs = bucket.list_blobs(prefix=prefix)
+
+    for blob in blobs:
+        blob.delete()
+        print(f"Removido: {blob.name}")
+
 def extrair_dados(**context):
     ontem = (datetime.date.today()).strftime("%Y-%m-%d")
 
@@ -145,6 +154,12 @@ with DAG(
         ],
         write_disposition="WRITE_APPEND",
         create_disposition="CREATE_IF_NEEDED",
+    )
+
+    limpar_csvs_task= PythonOperator(
+    task_id="limpar_csvs_gcs",
+    python_callable=limpar_arquivos_gcs,
+    op_args=["airflow_vps", "historico/ordens"],
     )
 
     criar_json >> carregar_bigquery

@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 import pandas_gbq
 import json
@@ -70,7 +71,7 @@ def extrair_dados(**context):
             "CUSTO_REAL": linha['CUSTO_REAL']
         })
 
-    local_path = f"csv/ordens_{ontem}.json"
+    local_path = f"csv/ordens.json"
 
     # Salva no disco
     with open(local_path, "w", encoding="utf-8") as f:
@@ -81,11 +82,11 @@ def extrair_dados(**context):
     # envia pro GCS
     client = storage.Client()
     bucket = client.bucket("airflow_vps")
-    blob = bucket.blob(f"historico/ordens_{ontem}.json")
+    blob = bucket.blob(f"historico/ordens.json")
     blob.upload_from_filename(local_path, content_type="application/json")
 
     # push só o caminho no GCS
-    context["ti"].xcom_push(key="ordens_path", value=f"gs://airflow_vps/historico/ordens_{ontem}.json")
+    context["ti"].xcom_push(key="ordens_path", value=f"gs://airflow_vps/historico/ordens.json")
 
     os.remove(local_path)
 
@@ -107,7 +108,7 @@ with DAG(
     carregar_bigquery = GCSToBigQueryOperator(
         task_id="carregar_bigquery",
         bucket="airflow_vps",
-        source_objects=["historico/ordens_{{ next_ds }}.json"], 
+        source_objects=["historico/ordens.json"], 
         destination_project_dataset_table="sz-00022-ws.TABELAS_SAP.HISTORICO_ORDENS",
         source_format="NEWLINE_DELIMITED_JSON",
         schema_fields=[

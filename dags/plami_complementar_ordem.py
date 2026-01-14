@@ -501,7 +501,6 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     ordem,
                     codigo,
                     descricao,
-                    estimado,
                     planejado,
                     real,
                     valor_descontado

@@ -495,8 +495,10 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     carregar_csv_custo_postgres = BashOperator(
         task_id='carregar_csv_custo_postgres',
         bash_command="""
-            cat /opt/airflow/csv/custo-*.csv | \
-            psql "$PG_CONN" -c "
+        for f in /opt/airflow/csv/custo-*.csv
+        do
+            echo "Carregando $f ..."
+            cat "$f" | psql "$PG_CONN" -c "
                 COPY custo_temp (
                     ordem,
                     codigo,

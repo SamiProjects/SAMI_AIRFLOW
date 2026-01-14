@@ -733,8 +733,8 @@ EOF
         ON p.ordem = o.ordem
     WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
     AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
-    AND p.status_sistema_ordem NOT ILIKE '%ELIM%'
-    AND p.status_sistema_ordem NOT ILIKE '%CONF%'
+    AND p.status_sistema_operacao NOT ILIKE '%ELIM%'
+    AND p.status_sistema_operacao NOT ILIKE '%CONF%'
     AND p.oportunidade <> '3'
     AND p.trabalho > 0
     AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');

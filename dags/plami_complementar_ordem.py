@@ -160,7 +160,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     DROP TABLE operacao_ordem_plami_old;
 
     COMMIT;
-    EOF
+EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -289,7 +289,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     DROP TABLE materiais_ordem_geral_old;
 
     COMMIT;
-    EOF
+EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -424,7 +424,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     DROP TABLE ordens_geral_old;
 
     COMMIT;
-    EOF
+EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -532,7 +532,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     DROP TABLE custo_old;
 
     COMMIT;
-    EOF
+EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -644,7 +644,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     DROP TABLE notas_ordem_temp;
 
     COMMIT;
-    EOF
+EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -667,6 +667,35 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
     BEGIN;
 
+    --adiciono coluna de custo na tabela operacao_ordem_plami
+    UPDATE operacao_ordem_plami p 
+    SET custo_real_ordem=c.real,custo_planejado_ordem=c.planejado,valor_descontado=c.valor_descontado
+    FROM (select ordem,sum(planejado) as planejado,sum(real) as real,min(valor_descontado) as valor_descontado from custo group by ordem) c
+    WHERE p.ordem = c.ordem;
+
+    --adiciona colunas de notas_ordem na tabela operacao_ordem_plami
+    UPDATE operacao_ordem_plami p 
+    SET vazamento=n.vazamento, 
+        seguranca=n.seguranca, 
+        alarme=n.alarme, 
+        data_criacao_ordem=n.data_criacao_ordem, 
+        nota=n.nota, 
+        classificacao_prioridade=n.classificacao_prioridade
+    FROM notas_ordem n
+    WHERE p.ordem = n.ordem;
+
+    --adiciona colunas de custo em notas_ordem
+    UPDATE notas_ordem n
+    SET custo_real_ordem=c.real,custo_planejado_ordem=c.planejado
+    FROM (select ordem,sum(planejado) as planejado,sum(real) as real,min(valor_descontado) as valor_descontado  from custo group by ordem) c
+    WHERE n.ordem = c.ordem;
+
+    --adiciona colunas de custo em ordens_geral
+    UPDATE ordens_geral o
+    SET custo_real=c.real,custo_planejado=c.planejado,valor_descontado=c.valor_descontado
+    FROM (select ordem,sum(planejado) as planejado,sum(real) as real,min(valor_descontado) as valor_descontado  from custo group by ordem) c
+    WHERE o.ordem = c.ordem;
+
     -- recria a view de operacoes
     CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
     SELECT 
@@ -686,26 +715,22 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
         p.disciplina_operacao,
         p.prioridade_nota,
         p.duracao,
-        c.custo_planejado_ordem,
-        c.custo_real_ordem,
+        p.custo_planejado_ordem,
+        p.custo_real_ordem,
         CASE 
             WHEN o.ordem IS NOT NULL THEN 'SIM'
             ELSE 'NÃO'
         END AS ordem_priorizada_operacao,
-        n.nota,
+        p.nota,
         p.revisao,
-        n.vazamento,
-        n.seguranca,
-        n.classificacao_prioridade,
-        n.alarme,
-        c.valor_descontado
+        p.vazamento,
+        p.seguranca,
+        p.classificacao_prioridade,
+        p.alarme,
+        p.valor_descontado
     FROM operacao_ordem_plami p
     LEFT JOIN ordem_priorizada_operacao o
         ON p.ordem = o.ordem
-    LEFT JOIN (select ordem,sum(planejado) as planejado,sum(real),min(valor_descontado) from custo group by ordem) c 
-        ON c.ordem = p.ordem
-    LEFT JOIN notas_ordem n
-        ON n.ordem = p.ordem
     WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
     AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
     AND p.status_sistema_ordem NOT ILIKE '%ELIM%'
@@ -766,8 +791,8 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     n.seguranca,
     n.vazamento,
     n.alarme,
-    c.custo_planejado_ordem,
-    c.custo_real_ordem,
+    n.custo_planejado_ordem,
+    n.custo_real_ordem,
     n.classificacao_prioridade,
     n.nota,
     n.tipo_nota,
@@ -796,8 +821,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     END AS ordem_priorizada_operacao
     FROM
     notas_ordem n
-    LEFT JOIN ordem_priorizada_operacao o ON n.ordem = o.ordem
-    LEFT JOIN custo c ON c.ordem = n.ordem;
+    LEFT JOIN ordem_priorizada_operacao o ON n.ordem = o.ordem;
 
     
     -- recria a view de ordens
@@ -812,7 +836,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
         ON g.ordem = o.ordem;
 
     COMMIT;
-    EOF
+EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )

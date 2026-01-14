@@ -823,4 +823,4 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
 
     finais = [limpar_csvs_task_operacao,limpar_csvs_task_materiais,limpar_csvs_task_ordens,limpar_csvs_task_custo,limpar_csvs_task_notas]
 
-    finais >> [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas] >> criar_views
+    finais >> swap_tabelas >> swap_tabelas_materiais >> swap_tabelas_ordens >> swap_tabelas_custo >> swap_tabelas_notas >> criar_views

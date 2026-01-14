@@ -584,7 +584,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
    )
 
     criar_tabela_temp_notas_pg = BashOperator(
-        task_id='criar_tabela_temp_pg',
+        task_id='criar_tabela_temp_notas_pg',
         bash_command="""
             psql "$PG_CONN" -c "
                 DROP TABLE IF EXISTS notas_ordem_temp;
@@ -595,7 +595,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     )
 
     carregar_csv_notas_postgres = BashOperator(
-        task_id='carregar_csv_postgres',
+        task_id='carregar_csv_notas_postgres',
         bash_command="""
             cat /opt/airflow/csv/notas_ordem-*.csv | \
             psql "$PG_CONN" -c "
@@ -653,7 +653,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     )
 
     limpar_csvs_task_notas = PythonOperator(
-    task_id="limpar_csvs_gcs_notas",
+    task_id="limpar_csvs_task_notas",
     python_callable=limpar_arquivos_gcs,
     op_args=["airflow_vps", "notas_ordem-"],
     )

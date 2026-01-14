@@ -509,8 +509,9 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
-                
             "
+        done
+
         """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )

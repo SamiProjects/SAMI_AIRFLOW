@@ -288,6 +288,49 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     -- remove a tabela antiga
     DROP TABLE materiais_ordem_geral_old;
 
+    -- recria a view de operacoes
+    CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
+    SELECT 
+        p.ordem,
+        p.operacao,
+        p.trabalho,
+        p.texto_breve_operacao,
+        p.descricao_ordem,
+        p.tipo_ordem,
+        p.oportunidade,
+        p.centro_trabalho,
+        p.centro_trabalho_operacao,
+        p.tag,
+        p.area,
+        p.disciplina,
+        p.qtd_pessoas,
+        p.disciplina_operacao,
+        p.prioridade_nota,
+        p.duracao,
+        p.custo_planejado_ordem,
+        p.custo_real_ordem,
+        CASE 
+            WHEN o.ordem IS NOT NULL THEN 'SIM'
+            ELSE 'NÃO'
+        END AS ordem_priorizada_operacao,
+        p.nota,
+        p.revisao,
+        p.vazamento,
+        p.seguranca,
+        p.classificacao_prioridade,
+        p.alarme,
+        p.valor_descontado
+    FROM operacao_ordem_plami p
+    LEFT JOIN ordem_priorizada_operacao o
+        ON p.ordem = o.ordem
+    WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
+    AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
+    AND p.status_sistema_operacao NOT ILIKE '%ELIM%'
+    AND p.status_sistema_operacao NOT ILIKE '%CONF%'
+    AND p.oportunidade <> '3'
+    AND p.trabalho > 0
+    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
+
     COMMIT;
 EOF
     """,
@@ -422,6 +465,17 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
 
     -- remove a tabela antiga
     DROP TABLE ordens_geral_old;
+
+    -- recria a view de ordens
+    CREATE OR REPLACE VIEW view_ordem_geral AS
+    SELECT g.*,
+        CASE 
+            WHEN o.ordem IS NOT NULL THEN 'SIM'
+            ELSE 'NÃO'
+        END AS ordem_priorizada_operacao
+    FROM ordens_geral g
+    LEFT JOIN ordem_priorizada_operacao o
+        ON g.ordem = o.ordem;
 
     COMMIT;
 EOF
@@ -660,9 +714,9 @@ EOF
     op_args=["airflow_vps", "notas_ordem-"],
     )
 
-    #VIEWS
-    criar_views = BashOperator(
-        task_id='criar_views',
+    #Adicionando linhas
+    add_custo_operacao = BashOperator(
+        task_id='add_custo_operacao',
         bash_command="""
     psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
     BEGIN;
@@ -672,6 +726,18 @@ EOF
     SET custo_real_ordem=c.real,custo_planejado_ordem=c.planejado,valor_descontado=c.valor_descontado
     FROM (select ordem,sum(planejado) as planejado,sum(real) as real,min(valor_descontado) as valor_descontado from custo group by ordem) c
     WHERE p.ordem = c.ordem;
+
+    COMMIT;
+EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    add_nota_operacao = BashOperator(
+        task_id='add_nota_operacao',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
 
     --adiciona colunas de notas_ordem na tabela operacao_ordem_plami
     UPDATE operacao_ordem_plami p 
@@ -684,11 +750,35 @@ EOF
     FROM notas_ordem n
     WHERE p.ordem = n.ordem;
 
+    COMMIT;
+EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+    
+    add_custo_nota = BashOperator(
+        task_id='add_custo_nota',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
+
     --adiciona colunas de custo em notas_ordem
     UPDATE notas_ordem n
     SET custo_real_ordem=c.real,custo_planejado_ordem=c.planejado
     FROM (select ordem,sum(planejado) as planejado,sum(real) as real,min(valor_descontado) as valor_descontado  from custo group by ordem) c
     WHERE n.ordem = c.ordem;
+
+    COMMIT;
+EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    add_custo_ordem = BashOperator(
+        task_id='add_custo_ordem',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
 
     --adiciona colunas de custo em ordens_geral
     UPDATE ordens_geral o
@@ -696,157 +786,18 @@ EOF
     FROM (select ordem,sum(planejado) as planejado,sum(real) as real,min(valor_descontado) as valor_descontado  from custo group by ordem) c
     WHERE o.ordem = c.ordem;
 
-    -- recria a view de operacoes
-    CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
-    SELECT 
-        p.ordem,
-        p.operacao,
-        p.trabalho,
-        p.texto_breve_operacao,
-        p.descricao_ordem,
-        p.tipo_ordem,
-        p.oportunidade,
-        p.centro_trabalho,
-        p.centro_trabalho_operacao,
-        p.tag,
-        p.area,
-        p.disciplina,
-        p.qtd_pessoas,
-        p.disciplina_operacao,
-        p.prioridade_nota,
-        p.duracao,
-        p.custo_planejado_ordem,
-        p.custo_real_ordem,
-        CASE 
-            WHEN o.ordem IS NOT NULL THEN 'SIM'
-            ELSE 'NÃO'
-        END AS ordem_priorizada_operacao,
-        p.nota,
-        p.revisao,
-        p.vazamento,
-        p.seguranca,
-        p.classificacao_prioridade,
-        p.alarme,
-        p.valor_descontado
-    FROM operacao_ordem_plami p
-    LEFT JOIN ordem_priorizada_operacao o
-        ON p.ordem = o.ordem
-    WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
-    AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
-    AND p.status_sistema_operacao NOT ILIKE '%ELIM%'
-    AND p.status_sistema_operacao NOT ILIKE '%CONF%'
-    AND p.oportunidade <> '3'
-    AND p.trabalho > 0
-    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
-
-    -- recria a view de notas_ordem
-    CREATE OR REPLACE VIEW "public"."view_notas_ordem" AS
-    SELECT
-    n.nome_autor,
-    n.criado_por,
-    n.nome_criado,
-    n.criado,
-    n.modificado_por,
-    n.nome_modificado,
-    n.modificado,
-    n.data_nota,
-    n.hora_nota,
-    n.inicio_desejado,
-    n.hora_inicio_desejado,
-    n.fim_desejado,
-    n.hora_fim_desejado,
-    n.oportunidade,
-    n.tipo_prioridade,
-    n.tipo_servico,
-    n.tipo_impacto,
-    n.grau_impacto,
-    n.probabilidade,
-    n.prioridade,
-    n.data_mod_prioridade,
-    n.tipo_ordem,
-    n.descricao_ordem,
-    n.status_usuario_ordem,
-    n.status_sistema_ordem,
-    n.centro_trabalho_ordem,
-    n.grupo_planejamento_ordem,
-    n.inicio_base_ordem,
-    n.hora_inicio_base_ordem,
-    n.fim_base_ordem,
-    n.hora_fim_base_ordem,
-    n.prioridade_ordem,
-    n.revisao,
-    n.tag_ordem,
-    n.desc_tag_ordem,
-    n.criado_por_ordem,
-    n.nome_criado_ordem,
-    n.data_criacao_ordem,
-    n.modificado_por_ordem,
-    n.nome_modificado_ordem,
-    n.data_modificacao_ordem,
-    n.objeto_nota,
-    n.priorizado,
-    n.planejado,
-    n.programado,
-    n.encerrado,
-    n.seguranca,
-    n.vazamento,
-    n.alarme,
-    n.custo_planejado_ordem,
-    n.custo_real_ordem,
-    n.classificacao_prioridade,
-    n.nota,
-    n.tipo_nota,
-    n.descricao,
-    n.status_usuario,
-    n.status_sistema,
-    n.ordem,
-    n.tag,
-    n.desc_tag,
-    n.tag_desc,
-    n.criticidade,
-    n.grupo_planejamento,
-    n.centro_trabalho,
-    n.autor,
-    n.nota_encerrada,
-    n.disciplina,
-    n.area,
-    n.area_agrup,
-    n.descricao_detalhada,
-    n.status_estoque,
-    n.total_materiais,
-    n.vencimento_priorizacao,
-    CASE
-        WHEN o.ordem IS NOT NULL THEN 'SIM'
-        ELSE 'NÃO'
-    END AS ordem_priorizada_operacao
-    FROM
-    notas_ordem n
-    LEFT JOIN ordem_priorizada_operacao o ON n.ordem = o.ordem;
-
-    
-    -- recria a view de ordens
-    CREATE OR REPLACE VIEW view_ordem_geral AS
-    SELECT g.*,
-        CASE 
-            WHEN o.ordem IS NOT NULL THEN 'SIM'
-            ELSE 'NÃO'
-        END AS ordem_priorizada_operacao
-    FROM ordens_geral g
-    LEFT JOIN ordem_priorizada_operacao o
-        ON g.ordem = o.ordem;
-
     COMMIT;
 EOF
     """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
-    
-    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv_operacao >> criar_tabela_temp_pg >> carregar_csv_postgres >> limpar_csv_local >> limpar_csvs_task_operacao
-    criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> limpar_csv_local_materiais >> limpar_csvs_task_materiais
-    criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> limpar_csv_local_ordens >> limpar_csvs_task_ordens
-    criar_tabela_temp_custo_bq >> exportar_custo_para_gcs >> baixar_csv_custo >> criar_tabela_temp_custo_pg >> carregar_csv_custo_postgres >> limpar_csv_local_custo >> limpar_csvs_task_custo
-    criar_tabela_temp_notas_bq >> exportar_notas_para_gcs >> baixar_csv_notas >> criar_tabela_temp_notas_pg >> carregar_csv_notas_postgres >> limpar_csv_local_notas >> limpar_csvs_task_notas
 
-    finais = [limpar_csvs_task_operacao,limpar_csvs_task_materiais,limpar_csvs_task_ordens,limpar_csvs_task_custo,limpar_csvs_task_notas]
+    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv_operacao >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csvs_task_operacao
+    criar_tabela_temp_materiais_bq >> exportar_para_materiais_gcs >> baixar_csv_materiais >> criar_tabela_temp_materiais_pg >> carregar_csv_materiais_postgres >> swap_tabelas_materiais >> limpar_csv_local_materiais >> limpar_csvs_task_materiais
+    criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens >> limpar_csvs_task_ordens
+    criar_tabela_temp_custo_bq >> exportar_custo_para_gcs >> baixar_csv_custo >> criar_tabela_temp_custo_pg >> carregar_csv_custo_postgres >> swap_tabelas_custo >> limpar_csv_local_custo >> limpar_csvs_task_custo
+    criar_tabela_temp_notas_bq >> exportar_notas_para_gcs >> baixar_csv_notas >> criar_tabela_temp_notas_pg >> carregar_csv_notas_postgres >> swap_tabelas_notas >> limpar_csv_local_notas >> limpar_csvs_task_notas
 
-    finais >> swap_tabelas >> swap_tabelas_materiais >> swap_tabelas_ordens >> swap_tabelas_custo >> swap_tabelas_notas >> criar_views
+    finais = [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas]
+
+    finais >> [add_custo_operacao,add_nota_operacao,add_custo_nota,add_custo_ordem]

@@ -3,6 +3,7 @@ from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobO
 from airflow.providers.google.cloud.transfers.bigquery_to_gcs import BigQueryToGCSOperator
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
+from airflow.operators.empty import EmptyOperator
 from google.cloud import storage
 from datetime import datetime
 import os
@@ -800,4 +801,13 @@ EOF
 
     finais = [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas]
 
-    finais >> [add_custo_operacao,add_nota_operacao,add_custo_nota,add_custo_ordem]
+    finais_done = EmptyOperator(task_id="finais_done")
+
+    finais >> finais_done
+
+    finais_done >> [
+        add_custo_operacao,
+        add_nota_operacao,
+        add_custo_nota,
+        add_custo_ordem
+]

@@ -56,7 +56,8 @@ with DAG(
             }
         },
         location='southamerica-east1',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
     )
 
     exportar_para_gcs = BigQueryToGCSOperator(
@@ -233,7 +234,8 @@ EOF
             }
         },
         location='southamerica-east1',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
     )
 
     exportar_para_materiais_gcs = BigQueryToGCSOperator(
@@ -362,7 +364,8 @@ EOF
             }
         },
         location='southamerica-east1',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
     )
 
     exportar_ordens_geral_para_gcs = BigQueryToGCSOperator(
@@ -508,7 +511,8 @@ EOF
             }
         },
         location='southamerica-east1',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
     )
 
     exportar_custo_para_gcs = BigQueryToGCSOperator(
@@ -616,7 +620,8 @@ EOF
             }
         },
         location='southamerica-east1',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
     )
   
     exportar_notas_para_gcs = BigQueryToGCSOperator(

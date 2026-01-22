@@ -37,7 +37,7 @@ def limpar_arquivos_gcs(bucket_name, prefix):
 
 with DAG(
     dag_id='exportar_complementar_ordem_plami',
-    schedule_interval='5 9-15/3 * * 1-5',
+    schedule_interval='5 9,12,15 * * 1-5',
     start_date=datetime(2025, 9, 1),
     catchup=False,
     tags=['bigquery', 'gcs', 'exportacao','plami'],

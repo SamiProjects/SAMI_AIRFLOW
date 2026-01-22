@@ -15,7 +15,7 @@ with DAG(
     default_args=default_args,
     description="Snapshot mensal da view de estoque no BigQuery (dia 1)",
     start_date=pendulum.datetime(2024, 1, 1, tz=local_tz),
-    schedule_interval="30 0 1 * *",  # dia 1 às 00:30
+    schedule_interval="30 0 * * 1",  #segunda às 00:30
     catchup=False,
     tags=['bigquery', 'gcs', 'historico','estoque']
 ) as dag:

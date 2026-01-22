@@ -160,6 +160,49 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     -- remove a tabela antiga
     DROP TABLE operacao_ordem_plami_old;
 
+    -- recria a view de operacoes
+    CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
+    SELECT 
+        p.ordem,
+        p.operacao,
+        p.trabalho,
+        p.texto_breve_operacao,
+        p.descricao_ordem,
+        p.tipo_ordem,
+        p.oportunidade,
+        p.centro_trabalho,
+        p.centro_trabalho_operacao,
+        p.tag,
+        p.area,
+        p.disciplina,
+        p.qtd_pessoas,
+        p.disciplina_operacao,
+        p.prioridade_nota,
+        p.duracao,
+        p.custo_planejado_ordem,
+        p.custo_real_ordem,
+        CASE 
+            WHEN o.ordem IS NOT NULL THEN 'SIM'
+            ELSE 'NÃO'
+        END AS ordem_priorizada_operacao,
+        p.nota,
+        p.revisao,
+        p.vazamento,
+        p.seguranca,
+        p.classificacao_prioridade,
+        p.alarme,
+        p.valor_descontado
+    FROM operacao_ordem_plami p
+    LEFT JOIN ordem_priorizada_operacao o
+        ON p.ordem = o.ordem
+    WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
+    AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
+    AND p.status_sistema_operacao NOT ILIKE '%ELIM%'
+    AND p.status_sistema_operacao NOT ILIKE '%CONF%'
+    AND p.oportunidade <> '3'
+    AND p.trabalho > 0
+    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
+
     COMMIT;
 EOF
     """,
@@ -288,49 +331,6 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
 
     -- remove a tabela antiga
     DROP TABLE materiais_ordem_geral_old;
-
-    -- recria a view de operacoes
-    CREATE OR REPLACE VIEW view_operacao_ordem_aberta AS
-    SELECT 
-        p.ordem,
-        p.operacao,
-        p.trabalho,
-        p.texto_breve_operacao,
-        p.descricao_ordem,
-        p.tipo_ordem,
-        p.oportunidade,
-        p.centro_trabalho,
-        p.centro_trabalho_operacao,
-        p.tag,
-        p.area,
-        p.disciplina,
-        p.qtd_pessoas,
-        p.disciplina_operacao,
-        p.prioridade_nota,
-        p.duracao,
-        p.custo_planejado_ordem,
-        p.custo_real_ordem,
-        CASE 
-            WHEN o.ordem IS NOT NULL THEN 'SIM'
-            ELSE 'NÃO'
-        END AS ordem_priorizada_operacao,
-        p.nota,
-        p.revisao,
-        p.vazamento,
-        p.seguranca,
-        p.classificacao_prioridade,
-        p.alarme,
-        p.valor_descontado
-    FROM operacao_ordem_plami p
-    LEFT JOIN ordem_priorizada_operacao o
-        ON p.ordem = o.ordem
-    WHERE p.status_sistema_ordem NOT ILIKE '%ENTE%'
-    AND p.status_sistema_ordem NOT ILIKE '%ENCE%'
-    AND p.status_sistema_operacao NOT ILIKE '%ELIM%'
-    AND p.status_sistema_operacao NOT ILIKE '%CONF%'
-    AND p.oportunidade <> '3'
-    AND p.trabalho > 0
-    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
 
     COMMIT;
 EOF

@@ -202,7 +202,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     AND p.status_sistema_operacao NOT ILIKE '%CONF%'
     AND p.oportunidade <> '3'
     AND p.trabalho > 0
-    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05');
+    AND p.tipo_ordem IN ('PM02','PM03','PM04','PM05','PM06');
 
     COMMIT;
 EOF

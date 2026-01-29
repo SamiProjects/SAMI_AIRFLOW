@@ -438,7 +438,8 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     encerrado,
                     area,
                     disciplina,
-                    prioridade_ordem
+                    prioridade_ordem,
+                    subarea
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

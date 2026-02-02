@@ -37,7 +37,7 @@ def extrair_dados(**context):
                 CUSTO_PLANEJADO,CUSTO_REAL
             FROM `sz-00022-ws.TABELAS_SAP.ORDENS`;"""
 
-    df = pandas_gbq.read_gbq(query, project_id="sz-00022-ws")
+    df = pandas_gbq.read_gbq(query, project_id="sz-int-aecorsoft-di-prd")
     linhas = json.loads(df.to_json(orient="records"))
 
     ordens = []

@@ -286,6 +286,7 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
                     material,
                     texto_material,
                     quantidade_necessaria,
+                    quantidade_retirada,
                     unidade_medida,
                     ctg_item,
                     deposito,

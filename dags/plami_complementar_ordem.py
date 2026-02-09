@@ -721,6 +721,117 @@ EOF
     python_callable=limpar_arquivos_gcs,
     op_args=["airflow_vps", "notas_ordem-"],
     )
+   
+    #CONFIRMACOES
+    criar_tabela_temp_confirmacoes_bq = BigQueryInsertJobOperator(
+        task_id='criar_tabela_temp_confirmacoes_bq',
+        configuration={
+            "query": {
+                "query": """
+                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_CONFIRMACOES_ORDENS_PLAMI` AS
+                    SELECT * FROM `sz-00022-ws.PLAMI.CONFIRMACOES_ORDENS_PLAMI`;
+                """,
+                "useLegacySql": False,
+            }
+        },
+        location='southamerica-east1',
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
+    )
+  
+    exportar_confirmacoes_para_gcs = BigQueryToGCSOperator(
+        task_id='exportar_confirmacoes_para_gcs',
+        source_project_dataset_table='sz-00022-ws.PLAMI.TMP_CONFIRMACOES_ORDENS_PLAMI',
+        destination_cloud_storage_uris=[
+            'gs://airflow_vps/confirmacoes-*.csv'
+        ],
+        export_format='CSV',
+        field_delimiter='\x1f',
+        print_header=True,
+        compression='NONE',
+        gcp_conn_id='google_cloud_default',
+        location='southamerica-east1',
+        force_rerun=True,
+    )   
+
+    baixar_csv_confirmacoes = PythonOperator(
+    task_id="baixar_csvs_gcs_confirmacoes",
+    python_callable=baixar_csvs,
+    op_args=["airflow_vps", "confirmacoes-", "/opt/airflow/csv"],
+   )
+
+    criar_tabela_temp_confirmacoes_pg = BashOperator(
+        task_id='criar_tabela_temp_confirmacoes_pg',
+        bash_command="""
+            psql "$PG_CONN" -c "
+                DROP TABLE IF EXISTS confirmacoes_temp;
+                CREATE TABLE confirmacoes_temp (LIKE confirmacoes INCLUDING ALL);
+            "
+        """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    carregar_csv_confirmacoes_postgres = BashOperator(
+        task_id='carregar_csv_confirmacoes_postgres',
+        bash_command="""
+            cat /opt/airflow/csv/confirmacoes-*.csv | \
+            psql "$PG_CONN" -c "
+                COPY confirmacoes_temp (
+                    ordem,
+                    tipo_ordem,
+                    inicio_real,
+                    operacao,
+                    confirmacao_final,
+                    trabalho_real,
+                    nome_empregado,
+                    numero_pessoal,
+                    data_lancamento,
+                    centro_trabalho_operacao,
+                    texto_confirmacao,
+                    semana,
+                    area,
+                    disciplina,
+                    disciplina_operacao,
+                    semana_lancamento
+                )
+                FROM STDIN
+                DELIMITER E'\\x1f' CSV HEADER;
+            "
+        """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    swap_tabelas_confirmacoes = BashOperator(
+        task_id='swap_tabelas_confirmacoes',
+        bash_command="""
+    psql "$PG_CONN" -v ON_ERROR_STOP=1 <<EOF
+    BEGIN;
+
+    -- renomeia a tabela original para backup
+    ALTER TABLE confirmacoes RENAME TO confirmacoes_old;
+
+    -- renomeia a staging para virar a definitiva
+    ALTER TABLE confirmacoes_temp RENAME TO confirmacoes;
+
+    -- remove a tabela antiga
+    DROP TABLE confirmacoes_old;
+
+    COMMIT;
+EOF
+    """,
+        env={"PG_CONN": os.getenv("PG_CONN")},
+    )
+
+    limpar_csv_local_confirmacoes = BashOperator(
+    task_id='limpar_csv_local_confirmacoes',
+    bash_command='rm -f /opt/airflow/csv/confirmacoes-*.csv'
+    )
+
+    limpar_csvs_task_confirmacoes = PythonOperator(
+    task_id="limpar_csvs_task_confirmacoes",
+    python_callable=limpar_arquivos_gcs,
+    op_args=["airflow_vps", "confirmacoes-"],
+    )
 
     #Adicionando linhas
     add_custo_operacao = BashOperator(
@@ -805,8 +916,9 @@ EOF
     criar_tabela_temp_ordens_bq >> exportar_ordens_geral_para_gcs >> baixar_csv_ordens >> criar_tabela_temp_ordens_pg >> carregar_csv_ordens_postgres >> swap_tabelas_ordens >> limpar_csv_local_ordens >> limpar_csvs_task_ordens
     criar_tabela_temp_custo_bq >> exportar_custo_para_gcs >> baixar_csv_custo >> criar_tabela_temp_custo_pg >> carregar_csv_custo_postgres >> swap_tabelas_custo >> limpar_csv_local_custo >> limpar_csvs_task_custo
     criar_tabela_temp_notas_bq >> exportar_notas_para_gcs >> baixar_csv_notas >> criar_tabela_temp_notas_pg >> carregar_csv_notas_postgres >> swap_tabelas_notas >> limpar_csv_local_notas >> limpar_csvs_task_notas
+    criar_tabela_temp_confirmacoes_bq >> exportar_confirmacoes_para_gcs >> baixar_csv_confirmacoes >> criar_tabela_temp_confirmacoes_pg >> carregar_csv_confirmacoes_postgres >> swap_tabelas_confirmacoes >> limpar_csv_local_confirmacoes >> limpar_csvs_task_confirmacoes
 
-    finais = [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas]
+    finais = [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas,swap_tabelas_confirmacoes]
 
     finais_done = EmptyOperator(task_id="finais_done")
 

@@ -728,8 +728,8 @@ EOF
         configuration={
             "query": {
                 "query": """
-                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_CONFIRMACOES_ORDENS_PLAMI` AS
-                    SELECT * FROM `sz-00022-ws.PLAMI.CONFIRMACOES_ORDENS_PLAMI`;
+                    CREATE OR REPLACE TABLE `sz-00022-ws.PLAMI.TMP_CONFIRMACOES_EMERGENCIAS_PLAMI` AS
+                    SELECT * FROM `sz-00022-ws.PLAMI.CONFIRMACOES_EMERGENCIAS_PLAMI`;
                 """,
                 "useLegacySql": False,
             }
@@ -741,7 +741,7 @@ EOF
   
     exportar_confirmacoes_para_gcs = BigQueryToGCSOperator(
         task_id='exportar_confirmacoes_para_gcs',
-        source_project_dataset_table='sz-00022-ws.PLAMI.TMP_CONFIRMACOES_ORDENS_PLAMI',
+        source_project_dataset_table='sz-00022-ws.PLAMI.TMP_CONFIRMACOES_EMERGENCIAS_PLAMI',
         destination_cloud_storage_uris=[
             'gs://airflow_vps/confirmacoes-*.csv'
         ],

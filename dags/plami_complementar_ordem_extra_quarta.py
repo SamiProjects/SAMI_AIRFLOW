@@ -774,8 +774,10 @@ EOF
     carregar_csv_confirmacoes_postgres = BashOperator(
         task_id='carregar_csv_confirmacoes_postgres',
         bash_command="""
-            cat /opt/airflow/csv/confirmacoes-*.csv | \
-            psql "$PG_CONN" -c "
+        for f in /opt/airflow/csv/confirmacoes-*.csv
+        do
+            echo "Carregando $f ..."
+            cat "$f" | psql "$PG_CONN" -c "
                 COPY confirmacoes_temp (
                     ordem,
                     tipo_ordem,
@@ -788,15 +790,16 @@ EOF
                     data_lancamento,
                     centro_trabalho_operacao,
                     texto_confirmacao,
-                    semana,
+                    semana_lancamento,
                     area,
                     disciplina,
-                    disciplina_operacao,
-                    semana_lancamento
+                    disciplina_operacao
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
             "
+        done
+
         """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -918,7 +921,7 @@ EOF
     criar_tabela_temp_notas_bq >> exportar_notas_para_gcs >> baixar_csv_notas >> criar_tabela_temp_notas_pg >> carregar_csv_notas_postgres >> swap_tabelas_notas >> limpar_csv_local_notas >> limpar_csvs_task_notas
     criar_tabela_temp_confirmacoes_bq >> exportar_confirmacoes_para_gcs >> baixar_csv_confirmacoes >> criar_tabela_temp_confirmacoes_pg >> carregar_csv_confirmacoes_postgres >> swap_tabelas_confirmacoes >> limpar_csv_local_confirmacoes >> limpar_csvs_task_confirmacoes
 
-    finais = [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas,swap_tabelas_confirmacoes]
+    finais = [swap_tabelas,swap_tabelas_materiais,swap_tabelas_ordens,swap_tabelas_custo,swap_tabelas_notas]
 
     finais_done = EmptyOperator(task_id="finais_done")
 

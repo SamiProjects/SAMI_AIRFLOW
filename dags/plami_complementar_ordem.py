@@ -793,7 +793,9 @@ EOF
                     semana_lancamento,
                     area,
                     disciplina,
-                    disciplina_operacao
+                    disciplina_operacao,
+                    descricao_ordem,
+                    tag
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;

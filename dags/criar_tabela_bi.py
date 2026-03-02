@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
-from airflow.utils.task_group import TaskGroup  
+from airflow.utils.task_group import TaskGroup
 import pendulum
 
 local_tz = pendulum.timezone("America/Sao_Paulo")
@@ -16,13 +16,14 @@ with DAG(
     default_args=default_args,
     description="Diário views indicadores BI",
     start_date=pendulum.datetime(2024, 1, 1, tz=local_tz),
-    schedule_interval="0 5 * * *",  
+    schedule_interval="0 5 * * *",
     catchup=False,
     tags=["bigquery", "gcs", "ordens"],
 ) as dag:
 
     diario_ordens = BigQueryInsertJobOperator(
         task_id="ordens",
+        project_id="sz-int-aecorsoft-di-prd",     #
         configuration={
             "query": {
                 "query": """
@@ -34,11 +35,11 @@ with DAG(
             }
         },
         location="southamerica-east1",
-        
     )
 
     diario_notas = BigQueryInsertJobOperator(
         task_id="notas",
+        project_id="sz-int-aecorsoft-di-prd",
         configuration={
             "query": {
                 "query": """
@@ -54,6 +55,7 @@ with DAG(
 
     diario_backlog = BigQueryInsertJobOperator(
         task_id="backlog",
+        project_id="sz-int-aecorsoft-di-prd",
         configuration={
             "query": {
                 "query": """
@@ -68,7 +70,8 @@ with DAG(
     )
 
     diario_pbcusto = BigQueryInsertJobOperator(
-        task_id="pb_custo",  
+        task_id="pb_custo",
+        project_id="sz-int-aecorsoft-di-prd",
         configuration={
             "query": {
                 "query": """
@@ -83,7 +86,8 @@ with DAG(
     )
 
     diario_realizadocustogeral = BigQueryInsertJobOperator(
-        task_id="realizado_custo_geral", 
+        task_id="realizado_custo_geral",
+        project_id="sz-int-aecorsoft-di-prd",
         configuration={
             "query": {
                 "query": """

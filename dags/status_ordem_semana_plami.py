@@ -13,6 +13,26 @@ def baixar_csv_para_csv_dir(bucket_name,bucket_blob,path_download):
     blob = bucket.blob(bucket_blob)
     blob.download_to_filename(path_download)
 
+def baixar_csvs(bucket_name, prefix, local_dir):
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blobs = bucket.list_blobs(prefix=prefix)
+
+    os.makedirs(local_dir, exist_ok=True)
+
+    for blob in blobs:
+        local_file = os.path.join(local_dir, os.path.basename(blob.name))
+        blob.download_to_filename(local_file)
+
+def limpar_arquivos_gcs(bucket_name, prefix):
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blobs = bucket.list_blobs(prefix=prefix)
+
+    for blob in blobs:
+        blob.delete()
+        print(f"Removido: {blob.name}")
+
 with DAG(
     dag_id='exportar_status_ordem_semana_plami',
     schedule_interval='0 5 * * 2',
@@ -33,14 +53,15 @@ with DAG(
             }
         },
         location='southamerica-east1',
-        gcp_conn_id='google_cloud_default'
+        gcp_conn_id='google_cloud_default',
+        project_id='sz-int-aecorsoft-di-prd'
     )
 
     exportar_para_gcs = BigQueryToGCSOperator(
         task_id='exportar_tabela_bq_gcs',
         source_project_dataset_table='sz-00022-ws.PLAMI.TMP_STATUS_ORDEM_SEMANA_PLAMI',
         destination_cloud_storage_uris=[
-            'gs://airflow_vps/status_ordem_semana_plami.csv'
+            'gs://airflow_vps/status_ordem_semana_plami-*.csv'
         ],
         export_format='CSV',
         field_delimiter='\x1f',
@@ -49,12 +70,12 @@ with DAG(
         gcp_conn_id='google_cloud_default',
         location='southamerica-east1',
         force_rerun=True,
-    )   
+    )
 
     baixar_csv = PythonOperator(
         task_id='baixar_csv_gcs',
-        python_callable=baixar_csv_para_csv_dir,
-        op_args=['airflow_vps', 'status_ordem_semana_plami.csv', '/opt/airflow/csv/status_ordem_semana_plami.csv']
+        python_callable=baixar_csvs,
+        op_args=['airflow_vps', 'status_ordem_semana_plami-', '/opt/airflow/csv']
     )
 
     criar_tabela_temp_pg = BashOperator(
@@ -75,17 +96,20 @@ psql "$PG_CONN" -v ON_ERROR_STOP=1 -c "
     carregar_csv_postgres = BashOperator(
         task_id='carregar_csv_postgres',
         bash_command="""
-            cat /opt/airflow/csv/status_ordem_semana_plami.csv | \
-            psql "$PG_CONN" -c "
+        for f in /opt/airflow/csv/status_ordem_semana_plami-*.csv
+        do
+            echo "Carregando $f ..."
+            cat "$f" | psql "$PG_CONN" -c "
                 COPY status_ordem_semana_plami_temp (
                     ordem,
                     status_sistema_ordem,
                     semana
-                  
                 )
                 FROM STDIN
                 DELIMITER E'\\x1f' CSV HEADER;
             "
+        done
+
         """,
         env={"PG_CONN": os.getenv("PG_CONN")},
     )
@@ -120,4 +144,10 @@ EOF
     bash_command='rm -f /opt/airflow/csv/status_ordem_semana_plami.csv'
     )  
 
-    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local
+    limpar_csvs_task = PythonOperator(
+    task_id="limpar_csvs_gcs",
+    python_callable=limpar_arquivos_gcs,
+    op_args=["airflow_vps", "status_ordem_semana_plami-"],
+    )
+    
+    criar_tabela_temp_bq >> exportar_para_gcs >> baixar_csv >> criar_tabela_temp_pg >> carregar_csv_postgres >> swap_tabelas >> limpar_csv_local >> limpar_csvs_task

@@ -782,6 +782,7 @@ EOF
                     ordem,
                     tipo_ordem,
                     inicio_real,
+                    fim_real,
                     operacao,
                     confirmacao_final,
                     trabalho_real,
@@ -793,7 +794,7 @@ EOF
                     semana_lancamento,
                     area,
                     disciplina,
-                    disciplina_operacao
+                    disciplina_operacao,
                     descricao_ordem,
                     tag
                 )

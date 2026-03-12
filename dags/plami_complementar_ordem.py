@@ -782,6 +782,7 @@ EOF
                     ordem,
                     tipo_ordem,
                     inicio_real,
+                    fim_real,
                     operacao,
                     confirmacao_final,
                     trabalho_real,
